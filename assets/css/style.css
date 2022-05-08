@@ -1,39 +1,37 @@
-.container{
-    background-color:beige;
+.w-10{
+    width: 10%;
 }
 
-h3, p{
-    margin: 0px;
-}
-
-i{
-    color: black;
-    background-color: white;
-    padding: 10px;
-}
-
-.wrapper{
-    display: inline-block;
-}
-
-.box{
-    overflow: hidden;
-    position :relative;
-    box-sizing: content-box;
+.profile-right span{
     margin: 30px;
 }
 
-.box-info{
-    width: 100%;
-    height: 100%;
-    background-color: gray;
-    opacity: 0.5;
-    position: absolute;
-    top: 100%;
-    transition: all 1s;
-    color: white;
-}
 
-.wrapper:hover .box-info{
-    top:50%
+@media screen and (max-width: 768px){
+    .container #profile-left img{
+        width: 100px;
+        height: 100px;
+    }
+
+    .container .profile #profile-left-info{
+        margin-right: 0px!important;
+    }
+
+    #profile-right{
+        border: 0px!important;
+        float: left!important;
+        margin-top: 20px;
+    }
+
+    #detail-left, #detail-mid, #detail-right{
+        width: 100%!important;
+    }
+
+    #detail-right{
+        margin-bottom: 30px!important;
+    }
+
+    #detail-right-bt{
+        display: none;
+    }
 }

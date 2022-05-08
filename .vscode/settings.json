@@ -1,0 +1,5 @@
+{
+    "html.preview.scrollPreviewWithEditor": false,
+    "html.preview.scrollEditorWithPreview": false,
+    "html.trace": "off"
+}
