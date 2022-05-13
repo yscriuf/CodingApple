@@ -1,0 +1,31 @@
+.box {
+    display: inline-block;
+    padding: 20px;
+    border: solid 1px gray;
+    border-radius: 10px;
+    background-color: rgba(0, 255, 255, 0.473);
+    color: white;
+}
+
+.box:hover {
+    animation-name: shake;
+    animation-duration: 1s;
+}
+
+@keyframes shake {
+    25% {
+        transform: rotate(-30deg);
+    }
+
+    50% {
+        transform: rotate(30deg);
+    }
+
+    75% {
+        transform: rotate(-30deg);
+    }
+
+    100% {
+        transform: rotate(0deg);
+    }
+}
