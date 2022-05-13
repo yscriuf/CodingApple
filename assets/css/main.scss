@@ -1,31 +1,28 @@
-.box {
-    display: inline-block;
-    padding: 20px;
-    border: solid 1px gray;
-    border-radius: 10px;
-    background-color: rgba(0, 255, 255, 0.473);
-    color: white;
+.grid-container{
+    display: grid;
+
+    grid-template-columns: 100px 100px 100px;
+    grid-template-rows: 100px 100px 100px;
+
+    grid-template-areas: 
+    "grid-nav grid-nav ."
+    "grid-nav grid-nav ."
+    ". . ."
+    ;
+
+    img{
+        border: solid 1px black;
+        width: 100%;
+        height: 100%;
+    }
 }
 
-.box:hover {
-    animation-name: shake;
-    animation-duration: 1s;
+.grid-nav{
+    grid-area: grid-nav;;
 }
 
-@keyframes shake {
-    25% {
-        transform: rotate(-30deg);
-    }
-
-    50% {
-        transform: rotate(30deg);
-    }
-
-    75% {
-        transform: rotate(-30deg);
-    }
-
-    100% {
-        transform: rotate(0deg);
+@media screen and (max-width: 768px){
+    .grid-container{
+        display: block;
     }
 }
