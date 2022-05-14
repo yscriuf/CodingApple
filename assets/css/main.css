@@ -1,35 +1,5 @@
-.outer-wrap .inner-wrap .back, .outer-wrap .inner-wrap img, .outer-wrap .inner-wrap {
-  width: 100%;
-  height: 100%;
-}
-
-.outer-wrap {
-  width: 300px;
-  height: 300px;
-}
-.outer-wrap .inner-wrap {
-  position: relative;
-  transform-style: preserve-3d;
-  transition: all 1s;
-}
-.outer-wrap .inner-wrap img {
-  box-sizing: border-box;
-  border: solid 1px gray;
-  border-radius: 50%;
-  -webkit-backface-visibility: hidden;
-          backface-visibility: hidden;
-}
-.outer-wrap .inner-wrap .back {
-  border-radius: 50%;
-  background-color: skyblue;
-  color: black;
-  position: absolute;
-  top: 0%;
-  text-align: center;
-  transform: rotateY(180deg);
-  -webkit-backface-visibility: hidden;
-          backface-visibility: hidden;
-}
-.outer-wrap:hover .inner-wrap {
-  transform: rotateY(180deg);
+#alert {
+  background-color: aqua;
+  padding: 20px;
+  display: none;
 }/*# sourceMappingURL=main.css.map */
