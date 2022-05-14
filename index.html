@@ -1,137 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.2/font/bootstrap-icons.css"
-    />
-    <link rel="stylesheet" href="./assets/css/main.css" />
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <title>Document</title>
-  </head>
-
-  <body>
-    <script>
-      const labels = ["January", "February", "March", "April", "May", "June"];
-
-      const data = {
-        labels: labels,
-        datasets: [
-          {
-            label: "My First dataset",
-            backgroundColor: "rgb(255, 99, 132)",
-            borderColor: "rgb(255, 99, 132)",
-            data: [0, 10, 5, 2, 20, 30, 45],
-          },
-        ],
-      };
-
-      const config = {
-        type: "line",
-        data: data,
-        options: {},
-      };
-    </script>
-
-    <div class="container">
-      <div class="sidebar">
-        <div class="sidebar-item">
-          <p>Home</p>
-          <i class="bi bi-house-door-fill"></i>
-          <div style="clear: both"></div>
-        </div>
-        <div class="sidebar-item">
-          <p>Services</p>
-          <i class="bi bi-headphones"></i>
-          <div style="clear: both"></div>
-        </div>
-        <div class="sidebar-item">
-          <p>Alerts</p>
-          <i class="bi bi-flag-fill"></i>
-          <div style="clear: both"></div>
-        </div>
-        <div class="sidebar-item">
-          <p>Stats</p>
-          <i class="bi bi-pie-chart-fill"></i>
-          <div style="clear: both"></div>
-        </div>
-      </div>
-
-      <div class="nav">
-        <div class="searchBox">
-          <input type="text" placeholder="Search" />
-          <button>
-            <i class="bi bi-search" style="color: white"></i>
-          </button>
-        </div>
-        <div class="blank"></div>
-        <div class="icon">
-          <i class="bi bi-bell">
-            <div class="noti">5</div>
-          </i>
-          <i class="bi bi-envelope">
-            <div class="noti">9</div>
-          </i>
-          <span>Jihyun Kim</span>
-        </div>
-      </div>
-
-      <div class="content">
-        <h2>Dashboard</h2>
-        <div class="dashboard">
-          <div class="card">
-            <div style="float: left">
-              <p>Earnings (Monthly)</p>
-              <h4>$400,000</h4>
-            </div>
-            <i class="bi bi-calendar"></i>
-          </div>
-          <div class="card">
-            <div style="float: left">
-              <p>Earnings (Anaual)</p>
-              <h4>$800,000</h4>
-            </div>
-            <i class="bi bi-currency-dollar"></i>
-          </div>
-          <div class="card">
-            <div style="float: left">
-              <p>Tasks</p>
-              <h4>13</h4>
-            </div>
-            <i class="bi bi-list-task"></i>
-          </div>
-          <div class="card">
-            <div style="float: left">
-              <p>Requests</p>
-              <h4>26</h4>
-            </div>
-            <i class="bi bi-chat-fill"></i>
-          </div>
-        </div>
-        <div class="bottom-wrap">
-          <div class="overview">
-            <h4>Earnings Overview</h4>
-            <canvas id="myChart"></canvas>
-            <script>
-              const myChart = new Chart(
-                document.getElementById("myChart"),
-                config
-              );
-            </script>
-          </div>
-          <div class="tasks">
-            <h4>Tasks</h4>
-            <ul>
-              <li>bqwnkler</li>
-              <li>wenrlk</li>
-              <li>qwnklerkl</li>
-            </ul>
-          </div>
-        </div>
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./assets/css/main.css">
+  <title>Document</title>
+</head>
+<body>
+  <div class="outer-wrap">
+    <div class="inner-wrap">
+      <img src="./assets/img/bbangdol.jpeg" class="front">
+      <div class="back">
+        <p>이름 : 이빵돌</p>
+        <p>나이 : 3살</p>
+        <p>최애 : 토돌이</p>
+        <p>사는곳 : 서울시 도봉구</p>
       </div>
     </div>
-  </body>
+  </div>
+</body>
 </html>
