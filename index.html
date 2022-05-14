@@ -9,11 +9,25 @@
 </head>
 <body>
   <div id="alert">
-    alertbox임.
-    <button onclick="document.getElementById('alert').style.display = 'none';">닫기</button>
+    <h1>alertbox임.</h1>
+    <button id="close">닫기</button>
   </div>
-  <button onclick="document.getElementById('alert').style.display = 'block';">button</button>
+  <button id="bt1">button1</button>
+  <button id="bt2">button2</button>
   <script>
+    document.getElementById('close').addEventListener('click', function(){
+      document.getElementById('alert').style.display = 'none';
+    });
+
+    document.getElementById('bt1').addEventListener('click', function(){
+      document.querySelector('#alert').style.display = "block";
+      document.querySelector('#alert h1').innerText = '바보';
+    });
+
+    document.getElementById('bt2').addEventListener('click', function(){
+      document.querySelector('#alert').style.display = "block";
+      document.querySelector('#alert h1').innerText = '멍청이';
+    });
   </script>
 </body>
 </html>
