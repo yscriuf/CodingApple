@@ -24,7 +24,8 @@
     <title>Document</title>
   </head>
   <body>
-    <button type="button" class="btn btn-primary" id="btn1">Primary</button>
+    <h4>옷 사세요</h4>
+    <button type="button" class="btn btn-primary" id="btn1">BUY</button>
 
     <div class="modal" tabindex="-1">
       <div class="modal-dialog">
@@ -34,7 +35,16 @@
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
-            <p>Modal body text goes here.</p>
+            <div class="mb-3">
+              <form action="success.html" id="login-form">
+                <label for="exampleFormControlInput1" class="form-label">ID</label>
+                <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+                <label for="exampleFormControlTextarea1" class="form-label">PW</label>
+                <input type="password" class="form-control" id="exampleFormControlTextarea1" placeholder="*****">
+                <button type="submit" class="btn btn-primary mt-2" id="form-submit">전송</button>
+                <button type="button" class="btn btn-danger mt-2">닫기</button>
+              </form>
+            </div>
           </div>
         </div>
       </div>
@@ -47,6 +57,13 @@
 
       $(".btn-close").on("click", function(){
         $(".modal").hide();
+      })
+
+      $("#login-form").on("submit", function(){
+        if($("#exampleFormControlInput1").val() == ""){
+          alert("아이디 입력하세요");
+          return false;
+        }
       })
     </script>
   </body>
