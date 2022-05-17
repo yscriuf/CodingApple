@@ -24,28 +24,24 @@
     <title>Document</title>
   </head>
   <body>
-    <div class="carousel">
-      <div class="carousel-inner" id="img1">
-        <img src="./assets/img/BBANG.jpeg" alt="">
+      <div class="carousel">
+        <div class="carousel-inner" id="img1">
+          <img src="./assets/img/BBANG.jpeg" alt="">
+        </div>
+        <div class="carousel-inner" id="img2">
+          <img src="./assets/img/bbangdol.jpeg" alt="">
+        </div>
+        <div class="carousel-inner" id="img3">
+          <img src="./assets/img/caterpillar.png" alt="">
+        </div>
       </div>
-      <div class="carousel-inner" id="img2">
-        <img src="./assets/img/bbangdol.jpeg" alt="">
-      </div>
-      <div class="carousel-inner" id="img3">
-        <img src="./assets/img/caterpillar.png" alt="">
-      </div>
-    </div>
 
     <button id="carousel-left">-</button>
     <button id="carousel-right">+</button>
 
     <script>
-      $("#img2").css("left", "100%");
-      $("#img3").css("left", "200%");
-
       var pos = 0;
       var width = $(".carousel").css("width").replace(/[^0-9]/g, ""); //숫자만
-      console.log(width);
 
       $("#carousel-left").on("click", function(){
         pos = pos + parseInt(width);
@@ -57,7 +53,7 @@
         pos = pos - parseInt(width);
         posPx = "translateX(" + (pos * 1) + "px)";
         $(".carousel-inner").css("transform", posPx);
-      })
+      });
     </script>
   </body>
 </html>
