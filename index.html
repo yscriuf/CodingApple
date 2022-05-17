@@ -64,6 +64,11 @@
           alert("아이디 입력하세요");
           return false;
         }
+        var text = $("#exampleFormControlTextarea1").val();
+        if(!/[A-Z]/.test(text)){
+          alert("대문자를 입력하세오!");
+          return false;
+        }
       })
     </script>
   </body>
