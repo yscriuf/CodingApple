@@ -24,51 +24,39 @@
     <title>Document</title>
   </head>
   <body>
-    <h4>옷 사세요</h4>
-    <button type="button" class="btn btn-primary" id="btn1">BUY</button>
-
-    <div class="modal" tabindex="-1">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title">Modal title</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-          <div class="modal-body">
-            <div class="mb-3">
-              <form action="success.html" id="login-form">
-                <label for="exampleFormControlInput1" class="form-label">ID</label>
-                <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
-                <label for="exampleFormControlTextarea1" class="form-label">PW</label>
-                <input type="password" class="form-control" id="exampleFormControlTextarea1" placeholder="*****">
-                <button type="submit" class="btn btn-primary mt-2" id="form-submit">전송</button>
-                <button type="button" class="btn btn-danger mt-2">닫기</button>
-              </form>
-            </div>
-          </div>
-        </div>
+    <div class="carousel">
+      <div class="carousel-inner" id="img1">
+        <img src="./assets/img/BBANG.jpeg" alt="">
+      </div>
+      <div class="carousel-inner" id="img2">
+        <img src="./assets/img/bbangdol.jpeg" alt="">
+      </div>
+      <div class="carousel-inner" id="img3">
+        <img src="./assets/img/caterpillar.png" alt="">
       </div>
     </div>
 
+    <button id="carousel-left">-</button>
+    <button id="carousel-right">+</button>
+
     <script>
-      $("#btn1").on("click", function(){
-        $(".modal").show();
+      $("#img2").css("left", "100%");
+      $("#img3").css("left", "200%");
+
+      var pos = 0;
+      var width = $(".carousel").css("width").replace(/[^0-9]/g, ""); //숫자만
+      console.log(width);
+
+      $("#carousel-left").on("click", function(){
+        pos = pos + parseInt(width);
+        posPx = "translateX(" + (pos * 1) + "px)";
+        $(".carousel-inner").css("transform", posPx);
       })
 
-      $(".btn-close").on("click", function(){
-        $(".modal").hide();
-      })
-
-      $("#login-form").on("submit", function(){
-        if($("#exampleFormControlInput1").val() == ""){
-          alert("아이디 입력하세요");
-          return false;
-        }
-        var text = $("#exampleFormControlTextarea1").val();
-        if(!/[A-Z]/.test(text)){
-          alert("대문자를 입력하세오!");
-          return false;
-        }
+      $("#carousel-right").on("click", function(){
+        pos = pos - parseInt(width);
+        posPx = "translateX(" + (pos * 1) + "px)";
+        $(".carousel-inner").css("transform", posPx);
       })
     </script>
   </body>
