@@ -42,16 +42,25 @@
     <script>
       var pos = 0;
       var width = $(".carousel").css("width").replace(/[^0-9]/g, ""); //숫자만
+      var negLimit = ($('.carousel-inner').length - 1) * width * -1;
 
       $("#carousel-left").on("click", function(){
         pos = pos + parseInt(width);
+        if(pos > 0){
+          pos = negLimit;
+        }
         posPx = "translateX(" + (pos * 1) + "px)";
+        console.log(posPx);
         $(".carousel-inner").css("transform", posPx);
       })
 
       $("#carousel-right").on("click", function(){
         pos = pos - parseInt(width);
+        if(pos < negLimit){
+          pos = 0;
+        }
         posPx = "translateX(" + (pos * 1) + "px)";
+        console.log(posPx);
         $(".carousel-inner").css("transform", posPx);
       });
     </script>
