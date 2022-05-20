@@ -23,40 +23,43 @@
     ></script>
     <title>Document</title>
   </head>
-  <body style="height: 300vw;">
-    <div style="position: fixed; width: 100%; background-color: #eee; height: 10px;">
-      <div class="scroll-spy"
-      style="width: 0%; background-color: skyblue; height: 10px; transition: all 1s;"
-      >
+  <body>
+    <ul class="nav nav-tabs">
+      <li class="nav-item">
+        <div class="nav-link active">Active</div>
+      </li>
+      <li class="nav-item">
+        <div class="nav-link ">link</div>
+      </li>
+      <li class="nav-item">
+        <div class="nav-link ">link</div>
+      </li>
+    </ul>
 
-      </div>
+    <div class="item item0">
+      1.Lorem ipsum dolor sit amet consectetur adipisicing elit. At provident a cumque esse harum reiciendis in, accusamus fugit aliquam soluta tempora mollitia doloribus sit repellendus nemo est dolore saepe voluptatibus?
     </div>
-    <nav style="position: fixed;">
-      <h2>hnwlkernkwkelr</h2>
-    </nav>
-    <div style="margin-top: 30px; font-size : 50px; width: 300px; height: 500px; overflow: scroll;" class="useage">
-      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam sint, ad illum minima deleniti explicabo incidunt maxime alias labore suscipit nemo odio nam facilis repellendus qui, debitis aliquam, quisquam atque.</p>
+
+    <div class="item item1 hidden">
+      2.Lorem ipsum dolor sit amet consectetur adipisicing elit. At provident a cumque esse harum reiciendis in, accusamus fugit aliquam soluta tempora mollitia doloribus sit repellendus nemo est dolore saepe voluptatibus?
     </div>
-    <div>
-      다음박스
+
+    <div class="item item2 hidden">
+      3.Lorem ipsum dolor sit amet consectetur adipisicing elit. At provident a cumque esse harum reiciendis in, accusamus fugit aliquam soluta tempora mollitia doloribus sit repellendus nemo est dolore saepe voluptatibus?
     </div>
-  </div>
+
     <script>
-      var fullHeight = $("html").prop("scrollHeight") - document.querySelector('html').clientHeight;
-      console.log(fullHeight);
+      $(".nav-item").on("click", function(){
+        let num = $(".nav-item").index(this);
+        console.log(num);
 
-      $(window).on('scroll', function(){
-        var per = $("html").scrollTop() / fullHeight * 100;
-        per = per + '%';
-        console.log(per);
-        $(".scroll-spy").css("width", per);
+        $(".nav-link").removeClass("active");
+        $(".nav-link").eq(num).addClass("active");
+
+        $(".item").addClass("hidden");
+        $(".item" + num).removeClass("hidden");
       });
+    </script>
 
-        $(".useage").on('scroll', function(){
-          if($(".useage").scrollTop() + $(".useage").innerHeight() >= $(".useage").prop("scrollHeight")) {
-            alert('end reached');
-          }
-        })
-        </script>
   </body>
 </html>
