@@ -49,22 +49,30 @@
         </div>
       </div>
     </div>
+    <div class="modal-close"></div>
 
     <script>
       $("#btn1").on("click", function(){
         $(".modal").show();
-      })
+      });
 
       $(".btn-close").on("click", function(){
         $(".modal").hide();
-      })
+      });
 
       $("#login-form").on("submit", function(){
         if($("#exampleFormControlInput1").val() == ""){
           alert("아이디 입력하세요");
           return false;
         }
-      })
+      });
+
+      $('.modal').on("click", function(e) {
+        if(e.target.className === "modal"){
+          $(".modal").hide();
+        }
+      });
+
     </script>
   </body>
 </html>
