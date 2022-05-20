@@ -50,7 +50,6 @@
     <div class="modal-close"></div>
 
     <script>
-<<<<<<< HEAD
       $(".nav-item").on("click", function(){
         let num = $(".nav-item").index(this);
         console.log(num);
@@ -61,29 +60,9 @@
         $(".item").addClass("hidden");
         $(".item" + num).removeClass("hidden");
       });
-=======
-      $("#btn1").on("click", function(){
-        $(".modal").show();
-      });
 
-      $(".btn-close").on("click", function(){
-        $(".modal").hide();
-      });
-
-      $("#login-form").on("submit", function(){
-        if($("#exampleFormControlInput1").val() == ""){
-          alert("아이디 입력하세요");
-          return false;
-        }
-      });
-
-      $('.modal').on("click", function(e) {
-        if(e.target.className === "modal"){
-          $(".modal").hide();
-        }
-      });
-
->>>>>>> b1cfbc2d1c21a86f4eca150eef218dd09c153af3
+      var car = { name : "이빵돌", age : "3", area : "서울시 도봉구"}
+      $(".item0").html(car.name);
     </script>
 
   </body>
