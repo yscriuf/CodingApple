@@ -47,8 +47,10 @@
     <div class="item item2 hidden">
       3.Lorem ipsum dolor sit amet consectetur adipisicing elit. At provident a cumque esse harum reiciendis in, accusamus fugit aliquam soluta tempora mollitia doloribus sit repellendus nemo est dolore saepe voluptatibus?
     </div>
+    <div class="modal-close"></div>
 
     <script>
+<<<<<<< HEAD
       $(".nav-item").on("click", function(){
         let num = $(".nav-item").index(this);
         console.log(num);
@@ -59,6 +61,29 @@
         $(".item").addClass("hidden");
         $(".item" + num).removeClass("hidden");
       });
+=======
+      $("#btn1").on("click", function(){
+        $(".modal").show();
+      });
+
+      $(".btn-close").on("click", function(){
+        $(".modal").hide();
+      });
+
+      $("#login-form").on("submit", function(){
+        if($("#exampleFormControlInput1").val() == ""){
+          alert("아이디 입력하세요");
+          return false;
+        }
+      });
+
+      $('.modal').on("click", function(e) {
+        if(e.target.className === "modal"){
+          $(".modal").hide();
+        }
+      });
+
+>>>>>>> b1cfbc2d1c21a86f4eca150eef218dd09c153af3
     </script>
 
   </body>
