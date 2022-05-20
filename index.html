@@ -24,6 +24,13 @@
     <title>Document</title>
   </head>
   <body style="height: 300vw;">
+    <div style="position: fixed; width: 100%; background-color: #eee; height: 10px;">
+      <div class="scroll-spy"
+      style="width: 0%; background-color: skyblue; height: 10px; transition: all 1s;"
+      >
+
+      </div>
+    </div>
     <nav style="position: fixed;">
       <h2>hnwlkernkwkelr</h2>
     </nav>
@@ -35,10 +42,17 @@
     </div>
   </div>
     <script>
+      var fullHeight = $("html").prop("scrollHeight") - document.querySelector('html').clientHeight;
+      console.log(fullHeight);
+
+      $(window).on('scroll', function(){
+        var per = $("html").scrollTop() / fullHeight * 100;
+        per = per + '%';
+        console.log(per);
+        $(".scroll-spy").css("width", per);
+      });
+
         $(".useage").on('scroll', function(){
-          console.log($(".useage").scrollTop());
-          console.log($(".useage").scrollTop() + $(".useage").innerHeight());
-          console.log($(".useage").prop("scrollHeight"));
           if($(".useage").scrollTop() + $(".useage").innerHeight() >= $(".useage").prop("scrollHeight")) {
             alert('end reached');
           }
