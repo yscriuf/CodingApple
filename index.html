@@ -23,23 +23,26 @@
     ></script>
     <title>Document</title>
   </head>
-  <body>
+  <body style="height: 300vw;">
     <nav style="position: fixed;">
       <h2>hnwlkernkwkelr</h2>
     </nav>
-    <div style="margin-top: 30px; font-size : 50px; height: 300vw;">
+    <div style="margin-top: 30px; font-size : 50px; width: 300px; height: 500px; overflow: scroll;" class="useage">
       <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam sint, ad illum minima deleniti explicabo incidunt maxime alias labore suscipit nemo odio nam facilis repellendus qui, debitis aliquam, quisquam atque.</p>
+    </div>
+    <div>
+      다음박스
     </div>
   </div>
     <script>
-      window.addEventListener('scroll', function(){
-        if(document.documentElement.scrollTop != 0){
-          $("nav h2").css("font-size", "100px");
-        }
-        else{
-          $("nav h2").css("font-size", "30px");
-        }
-      })
-    </script>
+        $(".useage").on('scroll', function(){
+          console.log($(".useage").scrollTop());
+          console.log($(".useage").scrollTop() + $(".useage").innerHeight());
+          console.log($(".useage").prop("scrollHeight"));
+          if($(".useage").scrollTop() + $(".useage").innerHeight() >= $(".useage").prop("scrollHeight")) {
+            alert('end reached');
+          }
+        })
+        </script>
   </body>
 </html>
