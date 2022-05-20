@@ -24,45 +24,22 @@
     <title>Document</title>
   </head>
   <body>
-      <div class="carousel">
-        <div class="carousel-inner" id="img1">
-          <img src="./assets/img/BBANG.jpeg" alt="">
-        </div>
-        <div class="carousel-inner" id="img2">
-          <img src="./assets/img/bbangdol.jpeg" alt="">
-        </div>
-        <div class="carousel-inner" id="img3">
-          <img src="./assets/img/caterpillar.png" alt="">
-        </div>
-      </div>
-
-    <button id="carousel-left">-</button>
-    <button id="carousel-right">+</button>
-
+    <nav style="position: fixed;">
+      <h2>hnwlkernkwkelr</h2>
+    </nav>
+    <div style="margin-top: 30px; font-size : 50px; height: 300vw;">
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam sint, ad illum minima deleniti explicabo incidunt maxime alias labore suscipit nemo odio nam facilis repellendus qui, debitis aliquam, quisquam atque.</p>
+    </div>
+  </div>
     <script>
-      var pos = 0;
-      var width = $(".carousel").css("width").replace(/[^0-9]/g, ""); //숫자만
-      var negLimit = ($('.carousel-inner').length - 1) * width * -1;
-
-      $("#carousel-left").on("click", function(){
-        pos = pos + parseInt(width);
-        if(pos > 0){
-          pos = negLimit;
+      window.addEventListener('scroll', function(){
+        if(document.documentElement.scrollTop != 0){
+          $("nav h2").css("font-size", "100px");
         }
-        posPx = "translateX(" + (pos * 1) + "px)";
-        console.log(posPx);
-        $(".carousel-inner").css("transform", posPx);
+        else{
+          $("nav h2").css("font-size", "30px");
+        }
       })
-
-      $("#carousel-right").on("click", function(){
-        pos = pos - parseInt(width);
-        if(pos < negLimit){
-          pos = 0;
-        }
-        posPx = "translateX(" + (pos * 1) + "px)";
-        console.log(posPx);
-        $(".carousel-inner").css("transform", posPx);
-      });
     </script>
   </body>
 </html>
