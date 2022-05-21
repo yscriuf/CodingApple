@@ -24,48 +24,31 @@
     <title>Document</title>
   </head>
   <body>
-    <div class="card-group container">
-      <div class="card">
-        <img src="https://via.placeholder.com/600">
-        <div class="card-body">
-          <h5>Card title</h5>
-          <p>가격 : 70000</p>
-          <button class="btn btn-danger">주문하기</button>
-        </div>
-      </div>
-      <div class="card">
-        <img src="https://via.placeholder.com/600">
-        <div class="card-body">
-          <h5>Card title</h5>
-          <p>가격 : 70000</p>
-          <button class="btn btn-danger">주문하기</button>
-        </div>
-      </div>
-      <div class="card">
-        <img src="https://via.placeholder.com/600">
-        <div class="card-body">
-          <h5>Card title</h5>
-          <p>가격 : 70000</p>
-          <button class="btn btn-danger">주문하기</button>
-        </div>
-      </div>
-    </div>
+
+    <form class="container my-5 form-group">
+      <p>상품선택</p>
+      <select id="item" class="form-select mt-2">
+        <option>모자</option>
+        <option>셔츠</option>
+      </select>
+    <select id="size" class="form-select mt-2 hidden">
+      <option>100</option>
+      <option>95</option>
+      <option>90</option>
+    </select>
+
+  </form>
     
     <script>
-      var products = [
-        { id : 0, price : 70000, title : 'Blossom Dress' },
-        { id : 1, price : 50000, title : 'Springfield Shirt' },
-        { id : 2, price : 60000, title : 'Black Monastery' }
-      ];
-
-      var cardTitle = $(".card-body h5");
-      var cardPrice = $(".card-body p");
-
-      for (let i = 0; i < products.length; i++) {
-        cardTitle.eq(i).html(products[i].title);
-        cardPrice.eq(i).html("가격 : " + products[i].price);
-      }
-
+      $("#item").change(function(){
+        // console.log($("#item option:selected").val());
+        if($("#item option:selected").val() == "셔츠"){
+          $("#size").removeClass("hidden");
+        }
+        else{
+          $("#size").addClass("hidden");
+        }
+      })
     </script> 
   </body>
 </html>
