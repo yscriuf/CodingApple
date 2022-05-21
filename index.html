@@ -24,46 +24,48 @@
     <title>Document</title>
   </head>
   <body>
-    <ul class="nav nav-tabs">
-      <li class="nav-item">
-        <div class="nav-link active">Active</div>
-      </li>
-      <li class="nav-item">
-        <div class="nav-link ">link</div>
-      </li>
-      <li class="nav-item">
-        <div class="nav-link ">link</div>
-      </li>
-    </ul>
-
-    <div class="item item0">
-      1.Lorem ipsum dolor sit amet consectetur adipisicing elit. At provident a cumque esse harum reiciendis in, accusamus fugit aliquam soluta tempora mollitia doloribus sit repellendus nemo est dolore saepe voluptatibus?
+    <div class="card-group container">
+      <div class="card">
+        <img src="https://via.placeholder.com/600">
+        <div class="card-body">
+          <h5>Card title</h5>
+          <p>가격 : 70000</p>
+          <button class="btn btn-danger">주문하기</button>
+        </div>
+      </div>
+      <div class="card">
+        <img src="https://via.placeholder.com/600">
+        <div class="card-body">
+          <h5>Card title</h5>
+          <p>가격 : 70000</p>
+          <button class="btn btn-danger">주문하기</button>
+        </div>
+      </div>
+      <div class="card">
+        <img src="https://via.placeholder.com/600">
+        <div class="card-body">
+          <h5>Card title</h5>
+          <p>가격 : 70000</p>
+          <button class="btn btn-danger">주문하기</button>
+        </div>
+      </div>
     </div>
-
-    <div class="item item1 hidden">
-      2.Lorem ipsum dolor sit amet consectetur adipisicing elit. At provident a cumque esse harum reiciendis in, accusamus fugit aliquam soluta tempora mollitia doloribus sit repellendus nemo est dolore saepe voluptatibus?
-    </div>
-
-    <div class="item item2 hidden">
-      3.Lorem ipsum dolor sit amet consectetur adipisicing elit. At provident a cumque esse harum reiciendis in, accusamus fugit aliquam soluta tempora mollitia doloribus sit repellendus nemo est dolore saepe voluptatibus?
-    </div>
-    <div class="modal-close"></div>
-
+    
     <script>
-      $(".nav-item").on("click", function(){
-        let num = $(".nav-item").index(this);
-        console.log(num);
+      var products = [
+        { id : 0, price : 70000, title : 'Blossom Dress' },
+        { id : 1, price : 50000, title : 'Springfield Shirt' },
+        { id : 2, price : 60000, title : 'Black Monastery' }
+      ];
 
-        $(".nav-link").removeClass("active");
-        $(".nav-link").eq(num).addClass("active");
+      var cardTitle = $(".card-body h5");
+      var cardPrice = $(".card-body p");
 
-        $(".item").addClass("hidden");
-        $(".item" + num).removeClass("hidden");
-      });
+      for (let i = 0; i < products.length; i++) {
+        cardTitle.eq(i).html(products[i].title);
+        cardPrice.eq(i).html("가격 : " + products[i].price);
+      }
 
-      var car = { name : "이빵돌", age : "3", area : "서울시 도봉구", favorite : ["예릉", "지현"]}
-      $(".item0").html(car.favorite[0]);
-    </script>
-
+    </script> 
   </body>
 </html>
