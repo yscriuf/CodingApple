@@ -30,6 +30,7 @@
       <select id="item" class="form-select mt-2">
         <option>모자</option>
         <option>셔츠</option>
+        <option>바지</option>
       </select>
     <select id="size" class="form-select mt-2 hidden">
       <option>100</option>
@@ -40,10 +41,26 @@
   </form>
     
     <script>
+      var pants_option = `
+      <option>28</option>
+      <option>30</option>
+      `;
+
+      var shirts_option = `
+      <option>100</option>
+      <option>95</option>
+      <option>90</option>
+      `;
+      
       $("#item").change(function(){
         // console.log($("#item option:selected").val());
         if($("#item option:selected").val() == "셔츠"){
           $("#size").removeClass("hidden");
+          $("#size").html(shirts_option);
+        }
+        else if($("#item option:selected").val() == "바지"){
+          $("#size").removeClass("hidden");
+          $("#size").html(pants_option);
         }
         else{
           $("#size").addClass("hidden");
