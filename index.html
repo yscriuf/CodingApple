@@ -41,26 +41,23 @@
   </form>
     
     <script>
-      var pants_option = `
-      <option>28</option>
-      <option>30</option>
-      `;
-
-      var shirts_option = `
-      <option>100</option>
-      <option>95</option>
-      <option>90</option>
-      `;
+      var pants = [28, 30, 32];
+      var shirts = [95, 100, 105, 110, 115];
       
       $("#item").change(function(){
         // console.log($("#item option:selected").val());
+        $("#size").html('');
         if($("#item option:selected").val() == "셔츠"){
           $("#size").removeClass("hidden");
-          $("#size").html(shirts_option);
+          shirts.forEach(function(data, i){
+            $("#size").append(`<option>${data}</option>`);
+          })
         }
         else if($("#item option:selected").val() == "바지"){
           $("#size").removeClass("hidden");
-          $("#size").html(pants_option);
+          pants.forEach(function(data, i){
+            $("#size").append(`<option>${data}</option>`);
+          })
         }
         else{
           $("#size").addClass("hidden");
