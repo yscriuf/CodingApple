@@ -24,30 +24,60 @@
     <title>Document</title>
   </head>
   <body>
+    <div class="container">
+      <div class="row"></div>
+      <button id="show-more">더보기</button>
+    </div>
 
-    <form class="container my-5 form-group">
-      <p>상품선택</p>
-      <select id="item" class="form-select mt-2">
-        <option>모자</option>
-        <option>셔츠</option>
-        <option>바지</option>
-      </select>
-    <select id="size" class="form-select mt-2 hidden">
-      <option>100</option>
-      <option>95</option>
-      <option>90</option>
-    </select>
-
-  </form>
-    
     <script>
-      $.get('https://codingapple1.github.io/price.json')
-      .done(function(data){
-        console.log(data.price);
-      })
-      .fail(function(){
-        console.log('fail');
-      })
-    </script> 
+      var item = [
+        { id: 1, price: 15000, title: "hnlqwnl" },
+        { id: 2, price: 30000, title: "sec" },
+      ];
+      var more = 0;
+
+      make_item();
+
+      $("#show-more").on("click", function () {
+        more = more + 1;
+        $.get(`https://codingapple1.github.io/js/more${more}.json`)
+          .done(function (data) {
+            data.forEach(function (d) {
+              console.log(d);
+              item.push(d);
+            });
+            make_item();
+          })
+          .fail(function () {
+            console.log("fail");
+            $("#show-more").css("display", "none");
+          });
+      });
+
+      function make_item(params) {
+        item.forEach(function (data) {
+          if ($(`#item-card${data.id}`).length > 0) {
+            console.log("jquery : 해당 객체 존재함");
+          } else {
+            console.log(data);
+
+            var title = `<h5>${data.title}</h5>`;
+            var price = `<p>${data.price}</p>`;
+            console.log(title);
+            console.log(price);
+
+            var card_template = `
+        <div class="col-sm-4" id="item-card${data.id}">
+          <img src="https://via.placeholder.com/600" class="w-100">
+          <h5>${title}</h5>
+          <p>${price}</p>
+          </div>
+          `;
+            console.log(card_template);
+            $(".row").append(card_template);
+          }
+        });
+      }
+    </script>
   </body>
 </html>
