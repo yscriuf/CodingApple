@@ -29,7 +29,10 @@
       <button id="show-more">더보기</button>
       <button id="sort-low">최저가 순으로 정렬</button>
       <button id="sort-cba">다나가 순으로 정렬</button>
-      <button id="filter-low6">6만원 이하 필터</button>
+      <button id="sort-abc">가나다 순으로 정렬</button>
+      <input type="text" id="filter-input">
+      <button id="filter">이하 필터</button>
+      <button id="origin">원래대로</button>
     </div>
 
     <script>
@@ -38,6 +41,7 @@
         { id: 2, price: 30000, title: "sec" },
       ];
       var more = 0;
+      var nItem = [...item];
 
       make_item(item);
 
@@ -49,6 +53,7 @@
               console.log(d);
               item.push(d);
             });
+            nItem = [...item];
             make_item(item);
           })
           .fail(function () {
@@ -58,22 +63,34 @@
       });
 
       $("#sort-low").on("click", function () {
-        item.sort(function (a, b) {
+        nItem.sort(function (a, b) {
           return a.price - b.price;
         });
-        make_item(item);
+        make_item(nItem);
       });
 
       $("#sort-cba").on("click", function () {
-        item.sort(function (a, b) {
+        nItem.sort(function (a, b) {
           return a.title > b.title ? -1 : 0;
         });
-        make_item(item);
+        make_item(nItem);
+      });
+      
+      $("#sort-abc").on("click", function () {
+        nItem.sort(function (a, b) {
+          return a.title < b.title ? -1 : 0;
+        });
+        make_item(nItem);
       });
 
-      $("#filter-low6").on("click", function () {
-        var nItem = item.filter(function (a) {
-          return a.price < 60000;
+      $("#origin").on("click", function(){
+        nItem = [...item];
+        make_item(item);
+      })
+
+      $("#filter").on("click", function () {
+        nItem = item.filter(function (a) {
+          return a.price < $("#filter-input").val();
         });
         console.log(nItem);
         make_item(nItem);
