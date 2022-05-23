@@ -30,7 +30,7 @@
       <button id="sort-low">최저가 순으로 정렬</button>
       <button id="sort-cba">다나가 순으로 정렬</button>
       <button id="sort-abc">가나다 순으로 정렬</button>
-      <input type="text" id="filter-input">
+      <input type="text" id="filter-input" />
       <button id="filter">이하 필터</button>
       <button id="origin">원래대로</button>
     </div>
@@ -62,6 +62,24 @@
           });
       });
 
+      //$(document).on("click", ".buy", function() {
+      $(".buy").on("click", function () {
+        alert("hi");
+        var item_title = $(this).siblings(".item-title")[0].innerHTML;
+        var localTemp = localStorage.getItem("cart");
+
+        if (localTemp == null) {
+          localTemp = [];
+        } else {
+          localTemp = localStorage.getItem("cart");
+          localTemp = JSON.parse(localTemp);
+        }
+        localTemp.push(item_title);
+        var newArr = JSON.stringify(localTemp);
+        console.log(newArr);
+        localStorage.setItem("cart", newArr);
+      });
+
       $("#sort-low").on("click", function () {
         nItem.sort(function (a, b) {
           return a.price - b.price;
@@ -75,7 +93,7 @@
         });
         make_item(nItem);
       });
-      
+
       $("#sort-abc").on("click", function () {
         nItem.sort(function (a, b) {
           return a.title < b.title ? -1 : 0;
@@ -83,10 +101,10 @@
         make_item(nItem);
       });
 
-      $("#origin").on("click", function(){
+      $("#origin").on("click", function () {
         nItem = [...item];
         make_item(item);
-      })
+      });
 
       $("#filter").on("click", function () {
         nItem = item.filter(function (a) {
@@ -101,7 +119,7 @@
         mObject.forEach(function (data) {
           console.log(data);
 
-          var title = `<h5>${data.title}</h5>`;
+          var title = `<h5 class="item-title">${data.title}</h5>`;
           var price = `<p>${data.price}</p>`;
           console.log(title);
           console.log(price);
@@ -109,8 +127,9 @@
           var card_template = `
         <div class="col-sm-4" id="item-card${data.id}">
           <img src="https://via.placeholder.com/600" class="w-100">
-          <h5>${title}</h5>
-          <p>${price}</p>
+          ${title}
+          ${price}
+          <button class="buy">구매</button>
           </div>
           `;
           console.log(card_template);
