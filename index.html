@@ -27,6 +27,9 @@
     <div class="container">
       <div class="row"></div>
       <button id="show-more">더보기</button>
+      <button id="sort-low">최저가 순으로 정렬</button>
+      <button id="sort-cba">다나가 순으로 정렬</button>
+      <button id="filter-low6">6만원 이하 필터</button>
     </div>
 
     <script>
@@ -36,7 +39,7 @@
       ];
       var more = 0;
 
-      make_item();
+      make_item(item);
 
       $("#show-more").on("click", function () {
         more = more + 1;
@@ -46,10 +49,7 @@
               console.log(d);
               item.push(d);
             });
-            item.sort(function (a, b) {
-              return a.price - b.price;
-            });
-            make_item();
+            make_item(item);
           })
           .fail(function () {
             console.log("fail");
@@ -57,9 +57,31 @@
           });
       });
 
-      function make_item(params) {
+      $("#sort-low").on("click", function () {
+        item.sort(function (a, b) {
+          return a.price - b.price;
+        });
+        make_item(item);
+      });
+
+      $("#sort-cba").on("click", function () {
+        item.sort(function (a, b) {
+          return a.title > b.title ? -1 : 0;
+        });
+        make_item(item);
+      });
+
+      $("#filter-low6").on("click", function () {
+        var nItem = item.filter(function (a) {
+          return a.price < 60000;
+        });
+        console.log(nItem);
+        make_item(nItem);
+      });
+
+      function make_item(mObject) {
         $(".row").html("");
-        item.forEach(function (data) {
+        mObject.forEach(function (data) {
           console.log(data);
 
           var title = `<h5>${data.title}</h5>`;
