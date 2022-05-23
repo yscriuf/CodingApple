@@ -46,6 +46,9 @@
               console.log(d);
               item.push(d);
             });
+            item.sort(function (a, b) {
+              return a.price - b.price;
+            });
             make_item();
           })
           .fail(function () {
@@ -55,27 +58,24 @@
       });
 
       function make_item(params) {
+        $(".row").html("");
         item.forEach(function (data) {
-          if ($(`#item-card${data.id}`).length > 0) {
-            console.log("jquery : 해당 객체 존재함");
-          } else {
-            console.log(data);
+          console.log(data);
 
-            var title = `<h5>${data.title}</h5>`;
-            var price = `<p>${data.price}</p>`;
-            console.log(title);
-            console.log(price);
+          var title = `<h5>${data.title}</h5>`;
+          var price = `<p>${data.price}</p>`;
+          console.log(title);
+          console.log(price);
 
-            var card_template = `
+          var card_template = `
         <div class="col-sm-4" id="item-card${data.id}">
           <img src="https://via.placeholder.com/600" class="w-100">
           <h5>${title}</h5>
           <p>${price}</p>
           </div>
           `;
-            console.log(card_template);
-            $(".row").append(card_template);
-          }
+          console.log(card_template);
+          $(".row").append(card_template);
         });
       }
     </script>
