@@ -62,8 +62,7 @@
           });
       });
 
-      //$(document).on("click", ".buy", function() {
-      $(".buy").on("click", function () {
+      $(document).on("click", ".buy", function() {
         alert("hi");
         var item_title = $(this).siblings(".item-title")[0].innerHTML;
         var localTemp = localStorage.getItem("cart");
