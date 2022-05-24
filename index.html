@@ -74,7 +74,11 @@
           localTemp = JSON.parse(localTemp);
         }
         localTemp.push(item_title);
-        var newArr = JSON.stringify(localTemp);
+        var uniqueArray = localTemp.filter(function(item, pos) {
+          return localTemp.indexOf(item) == pos;
+        })
+        console.log(uniqueArray);
+        var newArr = JSON.stringify(uniqueArray);
         console.log(newArr);
         localStorage.setItem("cart", newArr);
       });
