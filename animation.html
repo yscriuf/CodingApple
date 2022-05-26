@@ -28,12 +28,28 @@
     <script>
       $(window).scroll(function(){
         var height = $(window).scrollTop();
-        var y = (-1/500) * height + (1350/500);
-        console.log(y);
-        $('.card-box').eq(0).css('opacity', y);
-        console.log(height);
+        var img1S = 850;
+        var img1E = 1350;
+        var img2S = 1600;
+        var img2E = 2100;
+        var img1Y = (-1/(img1E-img1S)) * height + (img1E/(img1E-img1S));
+        var img2Y = (-1/(img2E-img2S)) * height + (img2E/(img2E-img2S));
+        var img1Z = 0.1 * img1Y + 0.9;
+        var img2Z = 0.1 * img2Y + 0.9;
 
-        //850~1350;
+        console.log(img1Y);
+        $('.card-box').eq(0).css('opacity', img1Y);
+        if(img1Z<=1){
+          $('.card-box').eq(0).css('transform', `scale(${img1Z},1)`);
+        }
+
+        console.log(img2Y);
+        $('.card-box').eq(1).css('opacity', img2Y);
+        if(img2Z<=1){
+          $('.card-box').eq(1).css('transform', `scale(${img2Z},1)`);
+        }
+
+        console.log(height);
       })
     </script>
   </body>
