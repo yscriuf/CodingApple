@@ -1,3 +1,17 @@
-.hidden{
-    display: none;
+.content{
+    background-color: #eee;
+}
+
+.item-wrap{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.cart{
+    background-color: gray;
+    text-align: center;
+    .cart-drag-zone{
+        background-color: black;
+        height: 500px;
+    }
 }

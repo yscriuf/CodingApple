@@ -5,14 +5,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css"
       rel="stylesheet"
-      integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+      integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor"
       crossorigin="anonymous"
     />
     <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
       crossorigin="anonymous"
     ></script>
     <link rel="stylesheet" href="./assets/css/main.css" />
@@ -24,63 +24,76 @@
     <title>Document</title>
   </head>
   <body>
-    <div class="carousel">
-      <div class="carousel-inner" id="img1">
-        <img src="./assets/img/BBANG.jpeg" alt="" />
-      </div>
-      <div class="carousel-inner" id="img2">
-        <img src="./assets/img/bbangdol.jpeg" alt="" />
-      </div>
-      <div class="carousel-inner" id="img3">
-        <img src="./assets/img/caterpillar.png" alt="" />
+    <div class="container-fluid">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">집꾸미기</a>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">스토어</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">시공견적</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+
+      <div class="content">
+        <input type="text" placeholder="검색어입력" class="m-3" />
+
+        <div class="item-wrap"></div>
+
+        <div class="cart m-3 p-1">
+          <h5 class="m-3">장바구니</h5>
+          <div class="m-3 cart-drag-zone col-sm-* col-md-* col-lg-*">
+            <p class="text-white" style="line-height: 500px">여기로 드래그</p>
+          </div>
+        </div>
       </div>
     </div>
 
     <script>
-      var pos = 0;
-      var width = $(".carousel")
-        .css("width")
-        .replace(/[^0-9]/g, ""); //숫자만
-      var negLimit = ($(".carousel-inner").length - 1) * width * -1;
-
-      var start, end, flag;
-      $(".carousel-inner")
-        .on("touchstart", function (e) {
-          e.preventDefault();
-          start = e.touches[0].clientX;
-          flag = true;
-          console.log("마우스 down");
-        });
-
-      $(document).on("touchend", function (e) {
-        e.preventDefault();
-        console.log("마우스 up ");
-        console.log("마우스 움직인 거리:" + (end-start));
-        flag = false;
-        $(".carousel-inner").css("transition", "all 1s");
-        if (end - start < -100) {
-          pos -= Number(width);
-        }
-        else if(end - start > 100){
-          pos += Number(width);
-          console.log(pos);
-        }
-        var posPx = `translateX(${pos}px)`;
-        console.log(posPx);
-        $(".carousel-inner").css("transform", posPx);
+      $(document).ready(function () {
+        $.get("./assets/json/store.json")
+          .done(function (data) {
+            for (key in data) {
+              data[key].forEach((element) => {
+                console.log(element);
+                var cardTemplate = `
+                  <div class="card m-3" style="width: 18rem">
+                    <img src="./assets/img/${element.photo}" class="card-img-top" alt="..." />
+                    <div class="card-body">
+                      <h5 class="card-title">${element.title}</h5>
+                      <p class="card-text">${element.brand}</p>
+                      <p class="card-text">${element.price}</p>
+                      <a href="#" class="btn btn-primary">Go somewhere</a>
+                    </div>
+                  </div>`;
+                $(".item-wrap").append(cardTemplate);
+              });
+            }
+          })
+          .fail(function () {
+            console.log("fail");
+          });
       });
-
-      $(".carousel-inner")
-        .on("touchmove", function (e) {
-          e.preventDefault();
-          if (flag) {
-            $(".carousel-inner").css("transition", "none");
-            end = e.touches[0].clientX;
-            console.log(end - start);
-            var posPx = "translateX(" + (end - start + pos) + "px)";
-            $(".carousel-inner").css("transform", posPx);
-          }
-        });
     </script>
   </body>
 </html>

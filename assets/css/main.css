@@ -1,20 +1,17 @@
-.hidden {
-  display: none;
+.content {
+  background-color: #eee;
 }
 
-.show {
-  display: block;
-}
-
-.carousel {
-  overflow: hidden;
-  width: 500px;
+.item-wrap {
   display: flex;
+  flex-wrap: wrap;
 }
-.carousel .carousel-inner {
-  flex: 0 0 auto;
-  width: 100%;
+
+.cart {
+  background-color: gray;
+  text-align: center;
 }
-.carousel .carousel-inner img {
-  width: 100%;
+.cart .cart-drag-zone {
+  background-color: black;
+  height: 500px;
 }/*# sourceMappingURL=main.css.map */
