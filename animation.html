@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script
+      src="https://code.jquery.com/jquery-3.6.0.min.js"
+      integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+      crossorigin="anonymous"
+    ></script>
+    <link rel="stylesheet" href="./assets/css/animation.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="card-background">
+      <div class="card-box">
+        <img src="./assets/img/card1.png" alt="" />
+      </div>
+      <div class="card-box">
+        <img src="./assets/img/card2.png" alt="" />
+      </div>
+      <div class="card-box">
+        <img src="./assets/img/card3.png" alt="" />
+      </div>
+    </div>
+
+    <script>
+      $(window).scroll(function(){
+        var height = $(window).scrollTop();
+        var img1S = 850;
+        var img1E = 1350;
+        var img2S = 1600;
+        var img2E = 2100;
+        var img1Y = (-1/(img1E-img1S)) * height + (img1E/(img1E-img1S));
+        var img2Y = (-1/(img2E-img2S)) * height + (img2E/(img2E-img2S));
+        var img1Z = 0.1 * img1Y + 0.9;
+        var img2Z = 0.1 * img2Y + 0.9;
+
+        console.log(img1Y);
+        $('.card-box').eq(0).css('opacity', img1Y);
+        if(img1Z<=1){
+          $('.card-box').eq(0).css('transform', `scale(${img1Z},1)`);
+        }
+
+        console.log(img2Y);
+        $('.card-box').eq(1).css('opacity', img2Y);
+        if(img2Z<=1){
+          $('.card-box').eq(1).css('transform', `scale(${img2Z},1)`);
+        }
+
+        console.log(height);
+      })
+    </script>
+  </body>
+</html>

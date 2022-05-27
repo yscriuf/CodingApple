@@ -24,45 +24,63 @@
     <title>Document</title>
   </head>
   <body>
-      <div class="carousel">
-        <div class="carousel-inner" id="img1">
-          <img src="./assets/img/BBANG.jpeg" alt="">
-        </div>
-        <div class="carousel-inner" id="img2">
-          <img src="./assets/img/bbangdol.jpeg" alt="">
-        </div>
-        <div class="carousel-inner" id="img3">
-          <img src="./assets/img/caterpillar.png" alt="">
-        </div>
+    <div class="carousel">
+      <div class="carousel-inner" id="img1">
+        <img src="./assets/img/BBANG.jpeg" alt="" />
       </div>
-
-    <button id="carousel-left">-</button>
-    <button id="carousel-right">+</button>
+      <div class="carousel-inner" id="img2">
+        <img src="./assets/img/bbangdol.jpeg" alt="" />
+      </div>
+      <div class="carousel-inner" id="img3">
+        <img src="./assets/img/caterpillar.png" alt="" />
+      </div>
+    </div>
 
     <script>
       var pos = 0;
-      var width = $(".carousel").css("width").replace(/[^0-9]/g, ""); //숫자만
-      var negLimit = ($('.carousel-inner').length - 1) * width * -1;
+      var width = $(".carousel")
+        .css("width")
+        .replace(/[^0-9]/g, ""); //숫자만
+      var negLimit = ($(".carousel-inner").length - 1) * width * -1;
 
-      $("#carousel-left").on("click", function(){
-        pos = pos + parseInt(width);
-        if(pos > 0){
-          pos = negLimit;
-        }
-        posPx = "translateX(" + (pos * 1) + "px)";
-        console.log(posPx);
-        $(".carousel-inner").css("transform", posPx);
-      })
+      var start, end, flag;
+      $(".carousel-inner")
+        .on("mousedown", function (e) {
+          e.preventDefault();
+          start = e.clientX;
+          flag = true;
+          console.log("마우스 down");
+        });
 
-      $("#carousel-right").on("click", function(){
-        pos = pos - parseInt(width);
-        if(pos < negLimit){
-          pos = 0;
+      $(document).on("mouseup", function (e) {
+        e.preventDefault();
+        console.log("마우스 up ");
+        console.log("마우스 움직인 거리:" + (end-start));
+        flag = false;
+        $(".carousel-inner").css("transition", "all 1s");
+        if (end - start < -100) {
+          pos -= Number(width);
         }
-        posPx = "translateX(" + (pos * 1) + "px)";
+        else if(end - start > 100){
+          pos += Number(width);
+          console.log(pos);
+        }
+        var posPx = `translateX(${pos}px)`;
         console.log(posPx);
         $(".carousel-inner").css("transform", posPx);
       });
+
+      $(".carousel-inner")
+        .on("mousemove", function (e) {
+          e.preventDefault();
+          if (flag) {
+            $(".carousel-inner").css("transition", "none");
+            end = e.clientX;
+            console.log(end - start);
+            var posPx = "translateX(" + (end - start + pos) + "px)";
+            $(".carousel-inner").css("transform", posPx);
+          }
+        });
     </script>
   </body>
 </html>
