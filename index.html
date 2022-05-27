@@ -45,14 +45,14 @@
 
       var start, end, flag;
       $(".carousel-inner")
-        .on("mousedown", function (e) {
+        .on("touchstart", function (e) {
           e.preventDefault();
-          start = e.clientX;
+          start = e.touches[0].clientX;
           flag = true;
           console.log("마우스 down");
         });
 
-      $(document).on("mouseup", function (e) {
+      $(document).on("touchend", function (e) {
         e.preventDefault();
         console.log("마우스 up ");
         console.log("마우스 움직인 거리:" + (end-start));
@@ -71,11 +71,11 @@
       });
 
       $(".carousel-inner")
-        .on("mousemove", function (e) {
+        .on("touchmove", function (e) {
           e.preventDefault();
           if (flag) {
             $(".carousel-inner").css("transition", "none");
-            end = e.clientX;
+            end = e.touches[0].clientX;
             console.log(end - start);
             var posPx = "translateX(" + (end - start + pos) + "px)";
             $(".carousel-inner").css("transform", posPx);
