@@ -75,14 +75,18 @@
     </div>
 
     <script>
+      var itemList = [];
+      var originItemHtml;
       $(document).ready(function () {
         $.get("./assets/json/store.json")
           .done(function (data) {
             for (key in data) {
               data[key].forEach((element) => {
+                itemList.push(element);
                 $(".item-wrap").append(makeCard(element));
               });
             }
+            originItemHtml = $(".item-wrap").html();
           })
           .fail(function () {
             console.log("fail");
@@ -95,9 +99,21 @@
         if (currentVal == oldVal) {
           return;
         }
+        else if(currentVal == ""){
+          console.log("hi");
+          $(".item-wrap").html(originItemHtml);
+          return;
+        }
 
         oldVal = currentVal;
-
+        itemList.forEach(function(element){
+          var eT = element.title;
+          if(eT.includes(currentVal) == true){
+            console.log(currentVal);
+            $(".item-wrap").html('');
+            $(".item-wrap").append(makeCard(element));
+          }
+        })
       });
 
       function makeCard(element){
