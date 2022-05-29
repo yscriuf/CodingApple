@@ -98,25 +98,48 @@
         var currentVal = $(this).val();
         if (currentVal == oldVal) {
           return;
-        }
-        else if(currentVal == ""){
+        } else if (currentVal == "") {
           console.log("hi");
           $(".item-wrap").html(originItemHtml);
           return;
         }
 
         oldVal = currentVal;
-        itemList.forEach(function(element){
+        $(".item-wrap").html("");
+        itemList.forEach(function (element) {
           var eT = element.title;
-          if(eT.includes(currentVal) == true){
+          if (eT.includes(currentVal) == true) {
             console.log(currentVal);
-            $(".item-wrap").html('');
             $(".item-wrap").append(makeCard(element));
           }
-        })
+        });
+        var tempHtml = $(".item-wrap").html();
+        console.log(tempHtml);
+        console.log(tempHtml.length);
+
+        for (var i = 0; i < tempHtml.length; i++) {
+          i = tempHtml.indexOf(currentVal, i);
+          console.log(i);
+          if (i == -1) {
+            break;
+          } else {
+            var focusStart = `<span style="background:yellow">`;
+            var focusEnd = `</span>`;
+            var position = i;
+            tempHtml = [tempHtml.slice(0, position), focusStart, tempHtml.slice(position)].join("");
+            console.log(tempHtml);
+            position = position + currentVal.length + focusStart.length;
+            tempHtml = [tempHtml.slice(0, position), focusEnd, tempHtml.slice(position)].join("");
+            console.log(tempHtml);
+            i = position + focusEnd.length;
+            console.log(i);
+          }
+        }
+        $(".item-wrap").html("");
+        $(".item-wrap").html(tempHtml);
       });
 
-      function makeCard(element){
+      function makeCard(element) {
         return `
           <div class="card m-3" style="width: 18rem">
             <img src="./assets/img/${element.photo}" class="card-img-top" alt="..." />
