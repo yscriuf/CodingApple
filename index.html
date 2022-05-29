@@ -67,8 +67,8 @@
 
         <div class="cart m-3 p-1">
           <h5 class="m-3">장바구니</h5>
-          <div class="m-3 cart-drag-zone col-sm-* col-md-* col-lg-*">
-            <p class="text-white" style="line-height: 500px">여기로 드래그</p>
+          <div class="m-3 cart-drag-zone col-sm-* col-md-* col-lg-* d-flex" style="align-items: center; justify-content: center;" ondrop="drop(event)" ondragover="allowDrop(event)">
+            <p class="text-white drag-text">여기로 드래그</p>
           </div>
         </div>
       </div>
@@ -80,10 +80,11 @@
       $(document).ready(function () {
         $.get("./assets/json/store.json")
           .done(function (data) {
+            var i = 0;
             for (key in data) {
               data[key].forEach((element) => {
                 itemList.push(element);
-                $(".item-wrap").append(makeCard(element));
+                $(".item-wrap").append(makeCard(element, i++));
               });
             }
             originItemHtml = $(".item-wrap").html();
@@ -106,11 +107,12 @@
 
         oldVal = currentVal;
         $(".item-wrap").html("");
+        var i = 0;
         itemList.forEach(function (element) {
           var eT = element.title;
           if (eT.includes(currentVal) == true) {
             console.log(currentVal);
-            $(".item-wrap").append(makeCard(element));
+            $(".item-wrap").append(makeCard(element, i++));
           }
         });
         var tempHtml = $(".item-wrap").html();
@@ -126,10 +128,18 @@
             var focusStart = `<span style="background:yellow">`;
             var focusEnd = `</span>`;
             var position = i;
-            tempHtml = [tempHtml.slice(0, position), focusStart, tempHtml.slice(position)].join("");
+            tempHtml = [
+              tempHtml.slice(0, position),
+              focusStart,
+              tempHtml.slice(position),
+            ].join("");
             console.log(tempHtml);
             position = position + currentVal.length + focusStart.length;
-            tempHtml = [tempHtml.slice(0, position), focusEnd, tempHtml.slice(position)].join("");
+            tempHtml = [
+              tempHtml.slice(0, position),
+              focusEnd,
+              tempHtml.slice(position),
+            ].join("");
             console.log(tempHtml);
             i = position + focusEnd.length;
             console.log(i);
@@ -139,15 +149,45 @@
         $(".item-wrap").html(tempHtml);
       });
 
-      function makeCard(element) {
+      function allowDrop(ev) {
+        ev.preventDefault();
+      }
+
+      function drag(ev) {
+        ev.dataTransfer.setData("text", ev.target.id);
+        console.log(ev.target.id);
+      }
+
+      function drop(ev) {
+        ev.preventDefault();
+        $(".cart-drag-zone .drag-text").remove();
+
+        var data = ev.dataTransfer.getData("text");
+        console.log(data);
+        if($(`#cart_${data}`).length != 0){
+          console.log("여기에 input text 내용이 바뀌도록 코딩");
+          var num = $(`#cart_${data} input`).val();
+          var num = $(`#cart_${data} input`).val(String(Number(num)+1));
+          return;
+        }
+
+        var nodeCopy = document.getElementById(data).cloneNode(true);
+        console.log(nodeCopy);
+        nodeCopy.id = "cart_" + data; /* We cannot use the same ID */
+        ev.target.appendChild(nodeCopy);
+        $(`#${nodeCopy.id} .card-body`).after(`<input type="text" value="1"}></input>`);
+        //https://stackoverflow.com/questions/13007582/html5-drag-and-copy?newreg=26bf4dc653414f8fbc6e6bfed8423b14
+      }
+
+      function makeCard(element, i) {
         return `
-          <div class="card m-3" style="width: 18rem">
+          <div id="card${i}" class="card m-3" style="width: 18rem" draggable="true" ondragstart="drag(event)">
             <img src="./assets/img/${element.photo}" class="card-img-top" alt="..." />
             <div class="card-body">
               <h5 class="card-title">${element.title}</h5>
                 <p class="card-text">${element.brand}</p>
                 <p class="card-text">${element.price}</p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
+                <a href="#" class="btn btn-primary">담기</a>
             </div>
           </div>`;
       }
