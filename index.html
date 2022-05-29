@@ -56,7 +56,12 @@
       </nav>
 
       <div class="content">
-        <input type="text" placeholder="검색어입력" class="m-3" />
+        <input
+          type="text"
+          placeholder="검색어입력"
+          class="m-3"
+          id="searchTextBox"
+        />
 
         <div class="item-wrap"></div>
 
@@ -75,18 +80,7 @@
           .done(function (data) {
             for (key in data) {
               data[key].forEach((element) => {
-                console.log(element);
-                var cardTemplate = `
-                  <div class="card m-3" style="width: 18rem">
-                    <img src="./assets/img/${element.photo}" class="card-img-top" alt="..." />
-                    <div class="card-body">
-                      <h5 class="card-title">${element.title}</h5>
-                      <p class="card-text">${element.brand}</p>
-                      <p class="card-text">${element.price}</p>
-                      <a href="#" class="btn btn-primary">Go somewhere</a>
-                    </div>
-                  </div>`;
-                $(".item-wrap").append(cardTemplate);
+                $(".item-wrap").append(makeCard(element));
               });
             }
           })
@@ -94,6 +88,30 @@
             console.log("fail");
           });
       });
+
+      var oldVal;
+      $("#searchTextBox").on("change keyup paste", function () {
+        var currentVal = $(this).val();
+        if (currentVal == oldVal) {
+          return;
+        }
+
+        oldVal = currentVal;
+
+      });
+
+      function makeCard(element){
+        return `
+          <div class="card m-3" style="width: 18rem">
+            <img src="./assets/img/${element.photo}" class="card-img-top" alt="..." />
+            <div class="card-body">
+              <h5 class="card-title">${element.title}</h5>
+                <p class="card-text">${element.brand}</p>
+                <p class="card-text">${element.price}</p>
+                <a href="#" class="btn btn-primary">Go somewhere</a>
+            </div>
+          </div>`;
+      }
     </script>
   </body>
 </html>
