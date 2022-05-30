@@ -21,6 +21,7 @@
       integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
       crossorigin="anonymous"
     ></script>
+    <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.min.js" integrity="sha256-eTyxS0rkjpLEo16uXTS0uVCS4815lc40K2iVpWDvdSY=" crossorigin="anonymous"></script>
     <title>Document</title>
   </head>
   <body>
@@ -175,6 +176,10 @@
         console.log(nodeCopy);
         nodeCopy.id = "cart_" + data; /* We cannot use the same ID */
         ev.target.appendChild(nodeCopy);
+        var temp = String(nodeCopy);
+        console.log(temp);
+        temp.replace(`draggable="true"`, `draggable="false"`);
+        console.log(temp);
         $(`#${nodeCopy.id} .card-body`).after(`<input type="text" value="1"}></input>`);
         //https://stackoverflow.com/questions/13007582/html5-drag-and-copy?newreg=26bf4dc653414f8fbc6e6bfed8423b14
       }
