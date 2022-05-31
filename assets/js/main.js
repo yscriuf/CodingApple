@@ -154,3 +154,10 @@ function makeDragItem(data) {
   console.log(makeNode);
   document.querySelector(".cart-drag-zone").appendChild(makeNode);
 }
+
+var user_name;
+var user_number;
+function saveUserInfo(){
+  user_name = $('#user_name').val();
+  user_number = $('#user_number').val();
+}

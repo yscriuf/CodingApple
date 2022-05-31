@@ -85,11 +85,57 @@
         <div class="m-3">
           <h5>최종가격</h5>
           <p>합계 <span id="final_price"></span></p>
-          <button id="btn_buy" class="btn btn-primary">구매하기</button>
+          <button
+            id="btn_buy"
+            class="btn btn-primary"
+            data-bs-toggle="modal"
+            data-bs-target="#exampleModal"
+          >
+            구매하기
+          </button>
         </div>
       </div>
     </div>
-    
+
+    <!-- Modal -->
+    <div
+      class="modal fade"
+      id="exampleModal"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">사용자 정보 입력</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <h5>성함</h5>
+            <input type="text" id="user_name">
+            <h5>연락처</h5>
+            <input type="text" id="user_number">
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              취소
+            </button>
+            <button type="button" class="btn btn-primary" onclick="saveUserInfo()" data-bs-dismiss="modal">입력완료</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <script src="./assets/js/main.js"></script>
   </body>
 </html>
