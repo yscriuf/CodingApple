@@ -180,17 +180,41 @@
         console.log(ev.target.id);
       }
 
-      $('#final_price').html(final_price);
+      $("#final_price").html(final_price);
 
       function drop(ev) {
+        console.log(ev);
         ev.preventDefault();
-        $(".cart-drag-zone .drag-text").remove();
-        
+
         var data = ev.dataTransfer.getData("text");
-        var idx = String(data).slice(-1);
+        makeDragItem(data);
+      }
+
+      $(document).on("click", ".btn-get", function (e) {
+        console.log("button Clicked");
+        console.log(e.target.parentNode.parentNode.id);
+        makeDragItem(e.target.parentNode.parentNode.id);
+      });
+
+      function makeCard(element, i) {
+        return `
+          <div id="card${i}" class="card m-3" style="width: 18rem" draggable="true" ondragstart="drag(event)">
+            <img src="./assets/img/${element.photo}" class="card-img-top" alt="..." />
+            <div class="card-body">
+              <h5 class="card-title">${element.title}</h5>
+                <p class="card-text">${element.brand}</p>
+                <p class="card-text">${element.price}</p>
+                <button class="card-btn btn btn-primary btn-get">담기</button>
+            </div>
+          </div>`;
+      }
+
+      function makeDragItem(data) {
+        $(".cart-drag-zone .drag-text").remove();
         console.log(data);
+        var idx = String(data).slice(-1);
         final_price += itemList[idx].price;
-        $('#final_price').html(final_price);
+        $("#final_price").html(final_price);
         if ($(`#cart_${data}`).length != 0) {
           console.log("여기에 input text 내용이 바뀌도록 코딩");
           var num = $(`#cart_${data} input`).val();
@@ -209,22 +233,8 @@
               <input type="text" value="1"}></input>
             </div>
           </div>`;
-          
         console.log(makeNode);
-        ev.target.appendChild(makeNode);
-      }
-
-      function makeCard(element, i) {
-        return `
-          <div id="card${i}" class="card m-3" style="width: 18rem" draggable="true" ondragstart="drag(event)">
-            <img src="./assets/img/${element.photo}" class="card-img-top" alt="..." />
-            <div class="card-body">
-              <h5 class="card-title">${element.title}</h5>
-                <p class="card-text">${element.brand}</p>
-                <p class="card-text">${element.price}</p>
-                <button class="card-btn btn btn-primary">담기</button>
-            </div>
-          </div>`;
+        document.querySelector('.cart-drag-zone').appendChild(makeNode);
       }
     </script>
   </body>
