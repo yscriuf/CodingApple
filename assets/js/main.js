@@ -160,4 +160,10 @@ var user_number;
 function saveUserInfo(){
   user_name = $('#user_name').val();
   user_number = $('#user_number').val();
+  console.log("canvas로 만들고 띄워주면 됨");
+  var canvasTemplate = `
+    <canvas id="bill">
+      <p>khlnklwkl</p>
+    </canvas>
+  `;
 }
