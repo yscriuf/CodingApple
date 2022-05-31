@@ -160,10 +160,27 @@ var user_number;
 function saveUserInfo(){
   user_name = $('#user_name').val();
   user_number = $('#user_number').val();
-  console.log("canvas로 만들고 띄워주면 됨");
-  var canvasTemplate = `
-    <canvas id="bill">
-      <p>khlnklwkl</p>
-    </canvas>
-  `;
+  var canvas = document.getElementById('canvas');
+  var c = canvas.getContext('2d');
+  c.clearRect(0, 0, 350, 350);
+  c.beginPath();
+  var yPos = 20;
+  var yOffset = 60;
+  c.font = '20px dotum';
+  c.fillText(new Date, 30, yPos);
+
+  var len = document.querySelector(".cart-drag-zone").children.length;
+  for(var i = 0; i < len; i++){
+    var id = document.querySelector(".cart-drag-zone").children[i].children[0].id;
+    var idx = String(id).slice(-1);
+    var count = document.querySelector(".cart-drag-zone").children[i].children[0].children[1].children[3].value;
+    console.log(idx);
+
+    c.fillText(itemList[idx].title, 30, yPos + yOffset); yOffset += 20;
+    c.fillText(itemList[idx].brand, 30, yPos + yOffset); yOffset += 20;
+    c.fillText("가격 : " + itemList[idx].price, 30, yPos + yOffset); yOffset += 20;
+    c.fillText("수량 : " + count, 30, yPos + yOffset); yOffset += 20;
+    c.fillText("합계 : " + itemList[idx].price * count, 30, yPos + yOffset); yOffset += 60;
+  }
+  c.fillText("총 합계 : " + final_price, 30, yPos + yOffset);
 }

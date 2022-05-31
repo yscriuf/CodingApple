@@ -96,7 +96,6 @@
         </div>
       </div>
     </div>
-<<<<<<< HEAD
 
     <!-- Modal -->
     <div
@@ -131,14 +130,50 @@
             >
               취소
             </button>
-            <button type="button" class="btn btn-primary" onclick="saveUserInfo()" data-bs-dismiss="modal">입력완료</button>
+            <button type="button" class="btn btn-primary" onclick="saveUserInfo()" data-bs-dismiss="modal" data-bs-toggle="modal"
+            data-bs-target="#bill">입력완료</button>
           </div>
         </div>
       </div>
     </div>
 
-=======
->>>>>>> master
+
+    <div
+      class="modal fade"
+      id="bill"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">영수증</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <div class="canvas-parent">
+              <canvas id="canvas" width="350" height="1000"></canvas>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              닫기
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <script src="./assets/js/main.js"></script>
   </body>
 </html>
