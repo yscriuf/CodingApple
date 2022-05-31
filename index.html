@@ -21,7 +21,11 @@
       integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
       crossorigin="anonymous"
     ></script>
-    <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.min.js" integrity="sha256-eTyxS0rkjpLEo16uXTS0uVCS4815lc40K2iVpWDvdSY=" crossorigin="anonymous"></script>
+    <script
+      src="https://code.jquery.com/ui/1.13.1/jquery-ui.min.js"
+      integrity="sha256-eTyxS0rkjpLEo16uXTS0uVCS4815lc40K2iVpWDvdSY="
+      crossorigin="anonymous"
+    ></script>
     <title>Document</title>
   </head>
   <body>
@@ -68,14 +72,26 @@
 
         <div class="cart m-3 p-1">
           <h5 class="m-3">장바구니</h5>
-          <div class="m-3 cart-drag-zone col-sm-* col-md-* col-lg-* d-flex" style="align-items: center; justify-content: center;" ondrop="drop(event)" ondragover="allowDrop(event)">
+          <div
+            class="m-3 cart-drag-zone col-sm-* col-md-* col-lg-* d-flex"
+            style="align-items: center; justify-content: center"
+            ondrop="drop(event)"
+            ondragover="allowDrop(event)"
+          >
             <p class="text-white drag-text">여기로 드래그</p>
           </div>
+        </div>
+
+        <div class="m-3">
+          <h5>최종가격</h5>
+          <p>합계 <span id="final_price"></span></p>
+          <button id="btn_buy" class="btn btn-primary">구매하기</button>
         </div>
       </div>
     </div>
 
     <script>
+      var final_price = 0;
       var itemList = [];
       var originItemHtml;
       $(document).ready(function () {
@@ -93,6 +109,11 @@
           .fail(function () {
             console.log("fail");
           });
+
+        $(".card-btn").click(function (e) {
+          console.log(e);
+          console.log("hi");
+        });
       });
 
       var oldVal;
@@ -159,16 +180,20 @@
         console.log(ev.target.id);
       }
 
+      $('#final_price').html(final_price);
+
       function drop(ev) {
         ev.preventDefault();
         $(".cart-drag-zone .drag-text").remove();
-
+        
         var data = ev.dataTransfer.getData("text");
         console.log(data);
-        if($(`#cart_${data}`).length != 0){
+        final_price += itemList[String(data).slice(-1)].price;
+        $('#final_price').html(final_price);
+        if ($(`#cart_${data}`).length != 0) {
           console.log("여기에 input text 내용이 바뀌도록 코딩");
           var num = $(`#cart_${data} input`).val();
-          var num = $(`#cart_${data} input`).val(String(Number(num)+1));
+          var num = $(`#cart_${data} input`).val(String(Number(num) + 1));
           return;
         }
 
@@ -176,11 +201,9 @@
         console.log(nodeCopy);
         nodeCopy.id = "cart_" + data; /* We cannot use the same ID */
         ev.target.appendChild(nodeCopy);
-        var temp = String(nodeCopy);
-        console.log(temp);
-        temp.replace(`draggable="true"`, `draggable="false"`);
-        console.log(temp);
-        $(`#${nodeCopy.id} .card-body`).after(`<input type="text" value="1"}></input>`);
+        $(`#${nodeCopy.id} .card-body`).after(
+          `<input type="text" value="1"}></input>`
+        );
         //https://stackoverflow.com/questions/13007582/html5-drag-and-copy?newreg=26bf4dc653414f8fbc6e6bfed8423b14
       }
 
@@ -192,7 +215,7 @@
               <h5 class="card-title">${element.title}</h5>
                 <p class="card-text">${element.brand}</p>
                 <p class="card-text">${element.price}</p>
-                <a href="#" class="btn btn-primary">담기</a>
+                <a href="#" class="card-btn btn btn-primary">담기</a>
             </div>
           </div>`;
       }
