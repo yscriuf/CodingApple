@@ -187,8 +187,9 @@
         $(".cart-drag-zone .drag-text").remove();
         
         var data = ev.dataTransfer.getData("text");
+        var idx = String(data).slice(-1);
         console.log(data);
-        final_price += itemList[String(data).slice(-1)].price;
+        final_price += itemList[idx].price;
         $('#final_price').html(final_price);
         if ($(`#cart_${data}`).length != 0) {
           console.log("여기에 input text 내용이 바뀌도록 코딩");
@@ -197,14 +198,20 @@
           return;
         }
 
-        var nodeCopy = document.getElementById(data).cloneNode(true);
-        console.log(nodeCopy);
-        nodeCopy.id = "cart_" + data; /* We cannot use the same ID */
-        ev.target.appendChild(nodeCopy);
-        $(`#${nodeCopy.id} .card-body`).after(
-          `<input type="text" value="1"}></input>`
-        );
-        //https://stackoverflow.com/questions/13007582/html5-drag-and-copy?newreg=26bf4dc653414f8fbc6e6bfed8423b14
+        var makeNode = document.createElement("div");
+        makeNode.innerHTML = `
+          <div id="cart_${data}" class="card m-3" style="width: 18rem" draggable="false" ondragstart="drag(event)">
+            <img src="./assets/img/${itemList[idx].photo}" class="card-img-top" alt="..." />
+            <div class="card-body">
+              <h5 class="card-title">${itemList[idx].title}</h5>
+              <p class="card-text">${itemList[idx].brand}</p>
+              <p class="card-text">${itemList[idx].price}</p>
+              <input type="text" value="1"}></input>
+            </div>
+          </div>`;
+          
+        console.log(makeNode);
+        ev.target.appendChild(makeNode);
       }
 
       function makeCard(element, i) {
@@ -215,7 +222,7 @@
               <h5 class="card-title">${element.title}</h5>
                 <p class="card-text">${element.brand}</p>
                 <p class="card-text">${element.price}</p>
-                <a href="#" class="card-btn btn btn-primary">담기</a>
+                <button class="card-btn btn btn-primary">담기</button>
             </div>
           </div>`;
       }
