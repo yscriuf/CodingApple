@@ -98,8 +98,20 @@ $(document).on("click", ".btn-get", function (e) {
   makeDragItem(e.target.parentNode.parentNode.id);
 });
 
-$(document).on("change", "#cart_card0 input", function (e) {
-  console.log("changed!");
+$(document).on('focusin', ".card-input", function(){
+  console.log("Saving value " + $(this).val());
+  $(this).data('val', $(this).val());
+});
+
+$(document).on('change', ".card-input", function(e){
+  var prev = $(this).data('val');
+  var current = $(this).val();
+  var idx = String(e.target.parentNode.parentNode.id).slice(-1);
+  final_price += itemList[idx].price * (current - prev);
+  $("#final_price").html(final_price);
+
+  console.log("Prev value " + prev);
+  console.log("New value " + current);
 });
 
 function makeCard(element, i) {
@@ -136,7 +148,7 @@ function makeDragItem(data) {
         <h5 class="card-title">${itemList[idx].title}</h5>
         <p class="card-text">${itemList[idx].brand}</p>
         <p class="card-text">${itemList[idx].price}</p>
-        <input type="text" value="1"}></input>
+        <input type="text" class="card-input" value="1"}></input>
       </div>
     </div>`;
   console.log(makeNode);
