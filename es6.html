@@ -1,10 +1,15 @@
 <script>
-  
-  function 함수(...rest){
-    console.log(rest);
+  var product1 = new MProduct('shirts', 50000);
+  var product2 = new MProduct('pants', 60000);
+
+  function MProduct(name, price){
+    this.name = name;
+    this.price = price;
+    this.부가세 = function(){
+      console.log(this.price / 10);
+      return this.price / 10;
+    };
   }
 
-  함수(1,2,3);
-  함수(1,2,3,4,5,6,7,8,9);
-
+  product1.부가세();
 </script>
