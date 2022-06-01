@@ -1,20 +1,12 @@
-<div style="display : none">모달창0</div>
-<div style="display : none">모달창1</div>
-<div style="display : none">모달창2</div>
+<script>
+  var pants = 0;
+  var socks = 100;
+  해체분석기`바지${pants} 양말${socks}`;
 
-<button>버튼0</button>
-<button>버튼1</button>
-<button>버튼2</button>
-
-<script> 
-  var 버튼들 = document.querySelectorAll('button');
-  var 모달창들 = document.querySelectorAll('div');
-  
-  for (var i = 0; i < 3; i++){
-  
-    버튼들[i].addEventListener('click', function(){
-      모달창들[i].style.display = 'block';
-    });
-  
+  function 해체분석기(text, vari, vari2){
+    if(vari == 0){
+      console.log(`${text[0]}다 팔렸어요` + text[1] + vari2);
+      return;
+    }
   }
-  </script>
+</script>
