@@ -1,50 +1,28 @@
 <script>
-  var a = [1, 2, 3];
-  var b = a;
+  function plus(a, b = 3){
+    console.log(a+b);
+  }
+  plus(3);
 
-  a[3] = 4;
-  console.log(a);
-  console.log(b);
-  //b 값은 바꾼적이 없는데, a값을 그대로 참조해버림.
+  function minus(a, b = a * 2){
+    console.log(a-b);
+  }
+  minus(3);
 
-  var a = [1, 2, 3];
-  var b = [...a];
+  function 함수1(){
+    return 5;
+  }
 
-  a[3] = 4;
-  console.log(a);
-  console.log(b);
-  //원했던 결과값이 나옴.
+  function multi(a, b = 함수1()){
+    console.log(a*b);
+  }
+  multi(3);
+  // Default Parametar문법
 
-  var a = [1, 2, 3];
-  var b = [4, 5];
-  var c = [...a, ...b];
-
-  console.log(c);
-  //이걸 이용해서 deep copy는 물론, 두 array를 합치는 것도 쉽게할 수 있음.
-
-  //object도 마찬가지임
-  var a = { num: 1, data: 2, temp: 3 };
-  var b = a;
-
-  a.test = 4;
-  console.log(a);
-  console.log(b);
-  //b 값은 바꾼적이 없는데, a값을 그대로 참조해버림.
-
-  var a = { num: 1, data: 2, temp: 3 };
-  var b = { ...a };
-
-  a.test = 4;
-  console.log(a);
-  console.log(b);
-  //원했던 결과값이 나옴.
-
-  var a = { num: 1, data: 2, temp: 3 };
-  var b = { test: 4, jirong: 5 };
-  var c = { ...a, ...b };
-
-  console.log(c);
-  //이걸 이용해서 deep copy는 물론, 두 array를 합치는 것도 쉽게할 수 있음.
-
-  //spread operator를 이용한 array, object Deep copy
+  function 함수(a,b,c,d,e){
+    for(let i = 0; i < arguments.length; i++){
+      console.log(arguments[i]);
+    }
+  }
+  함수(1,2,3,4,5);
 </script>
