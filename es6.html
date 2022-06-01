@@ -1,12 +1,50 @@
 <script>
-  var pants = 0;
-  var socks = 100;
-  해체분석기`바지${pants} 양말${socks}`;
+  var a = [1, 2, 3];
+  var b = a;
 
-  function 해체분석기(text, vari, vari2){
-    if(vari == 0){
-      console.log(`${text[0]}다 팔렸어요` + text[1] + vari2);
-      return;
-    }
-  }
+  a[3] = 4;
+  console.log(a);
+  console.log(b);
+  //b 값은 바꾼적이 없는데, a값을 그대로 참조해버림.
+
+  var a = [1, 2, 3];
+  var b = [...a];
+
+  a[3] = 4;
+  console.log(a);
+  console.log(b);
+  //원했던 결과값이 나옴.
+
+  var a = [1, 2, 3];
+  var b = [4, 5];
+  var c = [...a, ...b];
+
+  console.log(c);
+  //이걸 이용해서 deep copy는 물론, 두 array를 합치는 것도 쉽게할 수 있음.
+
+  //object도 마찬가지임
+  var a = { num: 1, data: 2, temp: 3 };
+  var b = a;
+
+  a.test = 4;
+  console.log(a);
+  console.log(b);
+  //b 값은 바꾼적이 없는데, a값을 그대로 참조해버림.
+
+  var a = { num: 1, data: 2, temp: 3 };
+  var b = { ...a };
+
+  a.test = 4;
+  console.log(a);
+  console.log(b);
+  //원했던 결과값이 나옴.
+
+  var a = { num: 1, data: 2, temp: 3 };
+  var b = { test: 4, jirong: 5 };
+  var c = { ...a, ...b };
+
+  console.log(c);
+  //이걸 이용해서 deep copy는 물론, 두 array를 합치는 것도 쉽게할 수 있음.
+
+  //spread operator를 이용한 array, object Deep copy
 </script>
