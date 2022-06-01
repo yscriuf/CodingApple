@@ -1,0 +1,35 @@
+<script>
+  console.log(this);
+  // 이 때 this 는 winodw가 됨.
+
+  var myObject = {
+    data: "kim",
+    func: function () {
+      console.log(this);
+    },
+  };
+  myObject.func();
+  // 이 때 this는 myObject가 됨.
+
+  var myObject = {
+    data: "kim",
+    func(){
+      console.log(this);
+    },
+  };
+  myObject.func();
+  // 이 때 this는 myObject가 됨.
+  // Object 내에서 함수를 이렇게 선언할 수도 있음.
+
+  var myObject = {
+    data: "kim",
+    func: () => {
+      console.log(this);
+    },
+  };
+  myObject.func();
+  // 이 때 this 는 winodw가 됨.
+
+  // this는 나를 담고있는 Object를 가리킴.
+
+</script>
