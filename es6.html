@@ -1,12 +1,18 @@
 <script>
-  var 부모 = {name:'kim', age:50};
-  var 자식 = Object.create(부모);
-  //Object.create를 이용하면 부모의 key와 value들이 자식의 prototype으로 상속됨.
-  자식.age = 20;
+  class 부모{
+    constructor(name){ //object 생성자 역할
+      this.name = name;
+    }
+    sayHi(){ //prototype 함수가 됨.
+      console.log("안녕하세요 " + this.name + "입니다");
+    }
+  }
 
-  var 손자 = Object.create(자식);
-  손자.age = 1;
-  console.log(손자.name);
+  var 자식 = new 부모('kim');
+  console.log(자식);
+  console.log(자식.name);
+  자식.sayHi();
+  console.log(Object.getPrototypeOf(자식)); //자식의 부모가 누구인지 알아내는 함수
 
-  //ES5 방식으로 구현하는 상속기능
+  //ES6 방식으로 구현하는 상속기능(Class)
 </script>
