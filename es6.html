@@ -1,59 +1,17 @@
-<button id="btn">버튼</button>
-
 <script>
-    console.log(this);
-    // 이 때 this 는 winodw가 됨.
+  console.log(hoisting);
+  hoi();
 
-    var myObject = {
-      data: "kim",
-      func: function () {
-        console.log(this);
-      },
-    };
-    myObject.func();
-    // 이 때 this는 myObject가 됨.
+  var hoisting = 1;
+  console.log(hoisting);
 
-    var myObject = {
-      data: "kim",
-      func(){
-        console.log(this);
-      },
-    };
-    myObject.func();
-    // 이 때 this는 myObject가 됨.
-    // Object 내에서 함수를 이렇게 선언할 수도 있음.
+  function hoi(){
+    console.log("hoisting Test");
+  }
 
-    var myObject = {
-      data: "kim",
-      func: () => {
-        console.log(this);
-      },
-    };
-    myObject.func();
-    // 이 때 this 는 winodw가 됨.
-    // this는 나를 담고있는 Object를 가리킴.
+  //hoising이란 javascript가 시작할 때 모든 변수를 선언하고 시작하는 것.
 
-    var myObject = {
-      data : ['김', '이', '박'],
-      func : function(){
-        console.log(this);
-        myObject.data.forEach(function(){
-          console.log(this)
-        });
-      },
-      func2 : function(){
-        console.log(this);
-        myObject.data.forEach(()=>{
-          console.log(this)
-        });
-      }
-    }
-    myObject.func();
-    myObject.func2();
-
-    document.getElementById('btn').addEventListener('click', function(e){
-      console.log(this);
-      console.log(e.currentTarget);
-      // addEventListener에서 this와 e.currentTarget은 같은 의미
-    });
+  window.gloabl = 100;
+  console.log(window.gloabl);
+  //window도 하나의 객체이기 때문에, 객체에 인자를 추가하듯이 window에 무언가를 추가하면 전역변수가 됨.
 </script>
