@@ -1,35 +1,59 @@
+<button id="btn">버튼</button>
+
 <script>
-  console.log(this);
-  // 이 때 this 는 winodw가 됨.
+    console.log(this);
+    // 이 때 this 는 winodw가 됨.
 
-  var myObject = {
-    data: "kim",
-    func: function () {
+    var myObject = {
+      data: "kim",
+      func: function () {
+        console.log(this);
+      },
+    };
+    myObject.func();
+    // 이 때 this는 myObject가 됨.
+
+    var myObject = {
+      data: "kim",
+      func(){
+        console.log(this);
+      },
+    };
+    myObject.func();
+    // 이 때 this는 myObject가 됨.
+    // Object 내에서 함수를 이렇게 선언할 수도 있음.
+
+    var myObject = {
+      data: "kim",
+      func: () => {
+        console.log(this);
+      },
+    };
+    myObject.func();
+    // 이 때 this 는 winodw가 됨.
+    // this는 나를 담고있는 Object를 가리킴.
+
+    var myObject = {
+      data : ['김', '이', '박'],
+      func : function(){
+        console.log(this);
+        myObject.data.forEach(function(){
+          console.log(this)
+        });
+      },
+      func2 : function(){
+        console.log(this);
+        myObject.data.forEach(()=>{
+          console.log(this)
+        });
+      }
+    }
+    myObject.func();
+    myObject.func2();
+
+    document.getElementById('btn').addEventListener('click', function(e){
       console.log(this);
-    },
-  };
-  myObject.func();
-  // 이 때 this는 myObject가 됨.
-
-  var myObject = {
-    data: "kim",
-    func(){
-      console.log(this);
-    },
-  };
-  myObject.func();
-  // 이 때 this는 myObject가 됨.
-  // Object 내에서 함수를 이렇게 선언할 수도 있음.
-
-  var myObject = {
-    data: "kim",
-    func: () => {
-      console.log(this);
-    },
-  };
-  myObject.func();
-  // 이 때 this 는 winodw가 됨.
-
-  // this는 나를 담고있는 Object를 가리킴.
-
+      console.log(e.currentTarget);
+      // addEventListener에서 this와 e.currentTarget은 같은 의미
+    });
 </script>
