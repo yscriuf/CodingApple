@@ -1,17 +1,20 @@
-<script>
-  console.log(hoisting);
-  hoi();
+<div style="display : none">모달창0</div>
+<div style="display : none">모달창1</div>
+<div style="display : none">모달창2</div>
 
-  var hoisting = 1;
-  console.log(hoisting);
+<button>버튼0</button>
+<button>버튼1</button>
+<button>버튼2</button>
 
-  function hoi(){
-    console.log("hoisting Test");
+<script> 
+  var 버튼들 = document.querySelectorAll('button');
+  var 모달창들 = document.querySelectorAll('div');
+  
+  for (var i = 0; i < 3; i++){
+  
+    버튼들[i].addEventListener('click', function(){
+      모달창들[i].style.display = 'block';
+    });
+  
   }
-
-  //hoising이란 javascript가 시작할 때 모든 변수를 선언하고 시작하는 것.
-
-  window.gloabl = 100;
-  console.log(window.gloabl);
-  //window도 하나의 객체이기 때문에, 객체에 인자를 추가하듯이 window에 무언가를 추가하면 전역변수가 됨.
-</script>
+  </script>
