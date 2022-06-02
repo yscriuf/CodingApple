@@ -1,18 +1,24 @@
 <script>
-  class 부모{
-    constructor(name){ //object 생성자 역할
-      this.name = name;
+
+  class 사람{
+    constructor(){
+      this.name = "park";
+      this.age = 20;
     }
-    sayHi(){ //prototype 함수가 됨.
-      console.log("안녕하세요 " + this.name + "입니다");
+    get nextAge(){
+      return this.age + 1;
+    }
+    set setAge(나이){
+      this.age = 나이;
     }
   }
 
-  var 자식 = new 부모('kim');
-  console.log(자식);
-  console.log(자식.name);
-  자식.sayHi();
-  console.log(Object.getPrototypeOf(자식)); //자식의 부모가 누구인지 알아내는 함수
+  var 사람1 = new 사람();
+  사람1.age(200); //기존방법
+  사람1.setAge = 200; //set을 이용한 방법
 
-  //ES6 방식으로 구현하는 상속기능(Class)
+  console.log(사람1.nextAge); //기존방법
+  console.log(사람1.nextAge()); //get을 이용한 방법
+
+  //setter getter 쓰는 이유와 방법
 </script>
