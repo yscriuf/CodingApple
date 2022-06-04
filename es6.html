@@ -1,31 +1,20 @@
 <script>
-  var arr = [2, 3, 4];
+  let 신체정보 = {
+    body: {
+      height: 190,
+      weight: 70,
+    },
+    size: ["상의 Large", "바지 30인치"],
+  };
 
-  var [a, b, c] = arr;
-  var [a, b, c] = [2, 3, 4];
-  console.log(a + b + c);
+  // let {height:키, weight:몸무게} = 신체정보.body;
+  // let [상의사이즈, 하의사이즈] = 신체정보.size;
 
-  var [a, b, c = 100] = [2, 3];
-  console.log(a + b + c);
-  ////
-
-  var obj = { name: "kim", age: 30 };
-  var { name, age } = obj;
-  var { name, age } = { name: "kim", age: 30 };
-  console.log(name + age);
-
-  var { name: 이름 } = { name: "kim" };
-  console.log(name);
-  var { name: 이름 = "lee" } = {};
-  console.log(이름);
-
-  ///
-
-  var name = "kim";
-  var age = 30;
-
-  var obj = { name: name, age: age };
-  console.log(obj);
-  var obj = { name, age };
-  console.log(obj);
+  let {
+    body: {
+      height : 키,
+      weight : 몸무게,
+    },
+    size: [상의사이즈, 하의사이즈],
+  } = 신체정보;
 </script>
