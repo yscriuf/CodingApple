@@ -1,34 +1,31 @@
 <script>
-  class Unit {
-    constructor() {
-      this.공격력 = 5;
-      this.체력 = 100;
-    }
-    get battlePoint() {
-      return this.공격력 + this.체력;
-    }
-    set heal(num) {
-      this.체력 += num;
-    }
-  }
+  var arr = [2, 3, 4];
 
-  var unit = new Unit();
+  var [a, b, c] = arr;
+  var [a, b, c] = [2, 3, 4];
+  console.log(a + b + c);
 
-  var data = {
-    odd: [],
-    even: [],
-    setter(...par) {
-      par.forEach( a => {
-        a % 2 ? this.even.push(a) : this.odd.push(a);
-      });
-    },
-    getter(){
-      console.log(this.odd.sort());
-      console.log(this.even.sort());
-    }
-  };
+  var [a, b, c = 100] = [2, 3];
+  console.log(a + b + c);
+  ////
 
-  data.setter(234,12,33,2514,55);
-  data.getter();
+  var obj = { name: "kim", age: 30 };
+  var { name, age } = obj;
+  var { name, age } = { name: "kim", age: 30 };
+  console.log(name + age);
 
+  var { name: 이름 } = { name: "kim" };
+  console.log(name);
+  var { name: 이름 = "lee" } = {};
+  console.log(이름);
+
+  ///
+
+  var name = "kim";
+  var age = 30;
+
+  var obj = { name: name, age: age };
+  console.log(obj);
+  var obj = { name, age };
+  console.log(obj);
 </script>
