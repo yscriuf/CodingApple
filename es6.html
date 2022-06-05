@@ -1,18 +1,20 @@
-Stack, Queue를 이용한 웹브라우저 동작원리
+<script>
+  var promise = new Promise(function(resolve, reject){
+    setTimeout(() => {
+      resolve();
+    }, 1000);
+  });
 
-python에서
-print("1")
-time.sleep(1)
-print("3")
+  promise.then(function(){
+    //resolve 함수가 실행될 때 실행되는곳
+    console.log("성공");
+  }).catch(function(){
+    //reject 함수가 실행될 때 실행되는곳
+    console.log("실패");
+  })
 
-이런 코드를 짠다면 1이 출력되고, 1초간 대기 후 3이 출력될것이다
-하지만 자바스크립트에서 아래 같은 코드를 짜면
-  console.log("1");
-  setTimeout(function(){console.log("3")}, 1000);
-  console.log("2");
-
-1,2가 나온 후 1초 뒤 3이 나오게 될 것이다.
-웹브라우저의 동작방식 때문인데 서버로의 ajax 요청, 이벤트리스너, setTimeout 이런 것들은
-웹브라우저가 바로 실행하지 않고, 어떠한 대기실로 보내놓는다.
-그리고 완료되는 시점에 queue라는 공간으로 이동시키고, queue에서는 stack이 비어있는것을 확인하고,
-stack으로 올려보낸다.
+  //promise는 3가지 상태가 있음.
+  //1. pending
+  //2. rejected
+  //3. resolved
+</script>
