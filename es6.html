@@ -1,9 +1,12 @@
+<custom-input name="이름"></custom-input>
+
 <script>
-  var arr = ['a', 'b', 'c', 'a'];
-  var arr2 = new Set(arr);
-  arr = [...arr2];
+  class 클래스 extends HTMLElement{
+    connectedCallback(){
+      let name = this.getAttribute('name');
+      this.innerHTML = `<label>${name}을 입력하세용</label><input>`
+    }
+  }
 
-  console.log(arr);
-
-  // 배열의 중복된 값을 Set으로 제거하는 코드
+  customElements.define("custom-input", 클래스);
 </script>
