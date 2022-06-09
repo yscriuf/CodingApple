@@ -1,34 +1,9 @@
 <script>
-    // key 값을 바꾸는 코드
-    var products = [
-    {
-      name1: "chair",
-      price1: 7000,
-    },
-    {
-      name2: "sofa",
-      price: 5000,
-    },
-    {
-      name1: "desk",
-      price3: 9000,
-    },
-  ];
+  var arr = ['a', 'b', 'c', 'a'];
+  var arr2 = new Set(arr);
+  arr = [...arr2];
 
-  products.forEach(function (arr, i) {
-    for (var obj in arr) {
-      console.log(obj);
-      if (obj.charAt(obj.length - 1) >= 0 && obj.charAt(obj.length - 1) <= 9) {
-        var new_obj = obj.substring(0, obj.length - 1);
-        Object.defineProperty(
-          arr,
-          new_obj,
-          Object.getOwnPropertyDescriptor(arr, obj)
-        );
-        delete arr[obj];
-      }
-    }
-  });
-  console.log("products : ");
-  console.log(products);
+  console.log(arr);
+
+  // 배열의 중복된 값을 Set으로 제거하는 코드
 </script>
