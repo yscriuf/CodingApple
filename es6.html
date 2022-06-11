@@ -1,7 +1,32 @@
 <div id="mordor">qnwklernklqwklern</div>
+<label>Shadow Dom에서 css style을 주어도, 밖에는 적용되지 않음.</label>
+<custom-input></custom-input>
+
+<template id="template1">
+  <br><br><br><label>이메일을 입력하세요</label><input>
+  <style>label { color : red; }</style>
+</template>
 
 <script>
   document.querySelector('#mordor').attachShadow({mode:'open'});
   document.querySelector('#mordor').shadowRoot.innerHTML =
-  `<p>qwenklrqwe</p>`;
+  `<p>이렇게</p>`;
+  //독립적으로 Shadow Dom을 만드는 방법
+
+  class 클래스 extends HTMLElement{
+    connectedCallback(){
+      this.attachShadow({mode:'open'});
+      this.shadowRoot.append(template1.content.cloneNode(true));
+
+      var el = this.shadowRoot.querySelector("input");
+      el.addEventListener("click", function(){
+        console.log("input 눌림");
+      })
+    }
+  }
+
+  //shadow dom 안에서는 css 스타일을 바꿔도 외부에 적용되지는 않음.
+
+  customElements.define("custom-input", 클래스);
+
 </script>
