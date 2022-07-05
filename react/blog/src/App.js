@@ -6,6 +6,7 @@ function App() {
   let blogName = "지렁이의 성장 블로그";
   let [title, changeTitle] = useState(['할머니 코트 추천', '여자 코트 추천', '남자 코트 추천']);
   let [like, upLike] = useState([0,0,0]);
+  let [modal, setModal] = useState(false);
 
   function upCntLike(i){
     var newLike = [...like];
@@ -30,19 +31,20 @@ function App() {
         게시글
       </div>
       <button onClick={ () => { order(); } }>이름순 정렬</button>
-      <div className="list">
-        <h4>{title[0]} <span onClick={ () => { upCntLike(0) } }>👍</span> {like[0]} </h4>
-        <p>2월 16일 발행</p>
-      </div>
-      <div className="list">
-        <h4>{title[1]} <span onClick={ () => { upCntLike(1) } }>👍</span> {like[1]} </h4>
-        <p>2월 16일 발행</p>
-      </div>
-      <div className="list">
-        <h4>{title[2]} <span onClick={ () => { upCntLike(2) } }>👍</span> {like[2]} </h4>
-        <p>2월 16일 발행</p>
-      </div>
-      <Modal />
+      {
+        title.map((t, i)=>{
+          return(
+            <div className="list">
+              <h4 onClick={() => { modal ? setModal(false) : setModal(true); }}>{title[i]} <span onClick={ () => { upCntLike(i) } }>👍</span> {like[i]} </h4>
+              <p>2월 16일 발행</p>
+            </div>
+          )
+        })
+      }
+      {
+        modal ? <Modal /> : null
+      }
+
     </div>
   );
 }
