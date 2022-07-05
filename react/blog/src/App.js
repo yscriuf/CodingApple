@@ -35,7 +35,7 @@ function App() {
         title.map((t, i)=>{
           return(
             <div className="list" key={i}>
-              <h4 onClick={() => { modal == i + 1 ? setModal(0) : setModal(i + 1); }}>{title[i]} <span onClick={ () => { upCntLike(i) } }>👍</span> {like[i]} </h4>
+              <h4 onClick={() => { modal == i + 1 ? setModal(0) : setModal(i + 1); }}>{title[i]} <span onClick={ (e) => { upCntLike(i); e.stopPropagation(); } }>👍</span> {like[i]} </h4>
               <p>2월 16일 발행</p>
             </div>
           )
@@ -44,6 +44,9 @@ function App() {
       {
         modal ? <Modal color="yellow" title={title[modal - 1]} /> : null
       }
+      
+      <input onChange={(e)=>{ console.log(e.target.value); }}></input>
+      <button>글 발행</button>
 
     </div>
   );
