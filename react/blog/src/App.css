@@ -17,6 +17,9 @@
   background-color: gray;
   color: white;
 }
+.modal{
+  background-color: #eee;
+}
 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {

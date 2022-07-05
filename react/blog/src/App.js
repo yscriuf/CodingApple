@@ -42,6 +42,17 @@ function App() {
         <h4>{title[2]} <span onClick={ () => { upCntLike(2) } }>👍</span> {like[2]} </h4>
         <p>2월 16일 발행</p>
       </div>
+      <Modal />
+    </div>
+  );
+}
+
+function Modal(){
+  return(
+    <div className='modal'>
+      <h4>제목</h4>
+      <p>날짜</p>
+      <p>내용</p>
     </div>
   );
 }
