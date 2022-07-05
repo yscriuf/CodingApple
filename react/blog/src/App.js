@@ -7,6 +7,7 @@ function App() {
   let [title, changeTitle] = useState(['할머니 코트 추천', '여자 코트 추천', '남자 코트 추천']);
   let [like, upLike] = useState([0,0,0]);
   let [modal, setModal] = useState(0);
+  let [addTitle, setAddTitle] = useState('');
 
   function upCntLike(i){
     var newLike = [...like];
@@ -20,6 +21,16 @@ function App() {
       return a < b ? -1 : a > b ? 1 : 0;
     });
     changeTitle(newTitle);
+  }
+
+  function add(t){
+    var newTitle = [...title];
+    newTitle.push(t);
+    changeTitle(newTitle);
+
+    var newLike = [...like];
+    newLike.push(0);
+    upLike(newLike);
   }
 
   return (
@@ -45,8 +56,8 @@ function App() {
         modal ? <Modal color="yellow" title={title[modal - 1]} /> : null
       }
       
-      <input onChange={(e)=>{ console.log(e.target.value); }}></input>
-      <button>글 발행</button>
+      <input onChange={(e)=>{ setAddTitle(e.target.value); }}></input>
+      <button onClick={()=>{ add(addTitle); }}>글 발행</button>
 
     </div>
   );
