@@ -34,7 +34,7 @@ function App() {
       {
         title.map((t, i)=>{
           return(
-            <div className="list">
+            <div className="list" key={i}>
               <h4 onClick={() => { modal ? setModal(false) : setModal(true); }}>{title[i]} <span onClick={ () => { upCntLike(i) } }>👍</span> {like[i]} </h4>
               <p>2월 16일 발행</p>
             </div>
