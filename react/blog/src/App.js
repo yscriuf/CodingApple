@@ -42,19 +42,20 @@ function App() {
         })
       }
       {
-        modal ? <Modal /> : null
+        modal ? <Modal color="yellow" title={title} order={order} /> : null
       }
 
     </div>
   );
 }
 
-function Modal(){
+function Modal(props){
   return(
-    <div className='modal'>
-      <h4>제목</h4>
+    <div className='modal' style={{background : props.color}}>
+      <h4>{props.title[0]}</h4>
       <p>날짜</p>
       <p>내용</p>
+      <button onClick={props.order}>정렬</button>
     </div>
   );
 }
