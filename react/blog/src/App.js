@@ -33,6 +33,19 @@ function App() {
     upLike(newLike);
   }
 
+  function remove(idx){
+    console.log(idx);
+    var newTitle = [...title];
+    newTitle.splice(idx, 1);
+    changeTitle(newTitle);
+
+    var newLike = [...like];
+    newLike.splice(idx, 1);
+    upLike(newLike);
+    
+    setModal(0);
+  }
+
   return (
     <div className="App">
       <div className="blog-title">
@@ -53,7 +66,7 @@ function App() {
         })
       }
       {
-        modal ? <Modal color="yellow" title={title[modal - 1]} /> : null
+        modal ? <Modal color="yellow" title={title[modal - 1]} idx={modal - 1} remove={remove}/> : null
       }
       
       <input onChange={(e)=>{ setAddTitle(e.target.value); }}></input>
@@ -69,6 +82,7 @@ function Modal(props){
       <h4>{props.title}</h4>
       <p>날짜</p>
       <p>내용</p>
+      <button onClick={()=>{props.remove(props.idx)}}>삭제</button>
     </div>
   );
 }
