@@ -42,7 +42,7 @@ function App() {
     var newLike = [...like];
     newLike.splice(idx, 1);
     upLike(newLike);
-    
+
     setModal(0);
   }
 
@@ -70,7 +70,7 @@ function App() {
       }
       
       <input onChange={(e)=>{ setAddTitle(e.target.value); }}></input>
-      <button onClick={()=>{ add(addTitle); }}>글 발행</button>
+      <button onClick={()=>{ if(addTitle != "") { add(addTitle); } }}>글 발행</button>
 
     </div>
   );
