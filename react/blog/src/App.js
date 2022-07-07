@@ -5,9 +5,20 @@ import { useState } from 'react';
 function App() {
   let blogName = "지렁이의 성장 블로그";
   let [title, changeTitle] = useState(['할머니 코트 추천', '여자 코트 추천', '남자 코트 추천']);
+  let [postDate, changePostDate] = useState([[2,3,14,6], [3,4,12,2], [4,1,2,11]]); // m:d:hh:mm
   let [like, upLike] = useState([0,0,0]);
   let [modal, setModal] = useState(0);
   let [addTitle, setAddTitle] = useState('');
+
+  function setDate(){
+    let today = new Date();
+
+    let month = today.getMonth() + 1;  // 월
+    let date = today.getDate();  // 날짜
+    let hours = today.getHours(); // 시
+    let minutes = today.getMinutes();  // 분
+    return [month, date, hours, minutes];
+  }
 
   function upCntLike(i){
     var newLike = [...like];
@@ -31,6 +42,10 @@ function App() {
     var newLike = [...like];
     newLike.push(0);
     upLike(newLike);
+
+    var newDate = [...postDate];
+    newDate.push(setDate());
+    changePostDate(newDate);
   }
 
   function remove(idx){
@@ -60,7 +75,7 @@ function App() {
           return(
             <div className="list" key={i}>
               <h4 onClick={() => { modal == i + 1 ? setModal(0) : setModal(i + 1); }}>{title[i]} <span onClick={ (e) => { upCntLike(i); e.stopPropagation(); } }>👍</span> {like[i]} </h4>
-              <p>2월 16일 발행</p>
+              <p>{postDate[i][0]}월 {postDate[i][1]}일 {postDate[i][2]}시 {postDate[i][3]}분 발행</p>
             </div>
           )
         })
