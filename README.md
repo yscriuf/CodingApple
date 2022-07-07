@@ -1,58 +1,70 @@
-# CodingApple
-Learning language with CodingApple
-Now updating!!
-<br>
+# Getting Started with Create React App
 
-## My Roadmap
-- [~~HTML/CSS~~](#html-css-final-report)
-- [~~JavaScript/JQuery~~](#javascript-jquery-final-report)
-- [~~Javascript ES6~~](#javascript-es6-final-report)
-- **React**
-- Node.js/MongoDB
-- TypeScript
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## HTML CSS Final Report
-IT WAS SO FUN! <br>
+## Available Scripts
 
-### I learned about
-- Basic HTML,CSS
-- Transition/Animation
-- Bootstrap
-- SASS
+In the project directory, you can run:
 
-### Report
-My own portfolio(No content)<br><br><br>
-![htmlcssReport](./assets/img/portfolio_report.png)
+### `npm start`
 
-Flip 3d Animation
-![htmlcssReport2](./assets/img/portfolio_report2.gif)
+Runs the app in the development mode.\
+Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-## JavaScript JQuery Final Report
-I REALIZED JAVASCRIPT IS VERY POWERFUL<br>
+The page will reload when you make changes.\
+You may also see any lint errors in the console.
 
-### I learned about
-- Javascript eventListener
-- Ajax
-- Event bubling
-- Jquery
-- Array, Object
+### `npm test`
 
-### Report
-I made a simple item order web
-![javascriptReport2](./assets/img/portfolio_report_javascript.png)
+Launches the test runner in the interactive watch mode.\
+See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-## Javascript ES6 Final Report
-I WANT TO LEARN JAVASCRIPT MORE!!! <br>
+### `npm run build`
 
-### I learned about
-- This
-- Variable, Template literals
-- Spread operator, Rest
-- How to run Web browser, Object
-- Prototype, Constructor, Class
-- Sync/Async
-- Promise, Try/Catch
-- Map, Set
+Builds the app for production to the `build` folder.\
+It correctly bundles React in production mode and optimizes the build for the best performance.
 
-### Report
-Please Check my blogs!!  [![Tech Blog Badge](http://img.shields.io/badge/-Tech%20blog-black?style=flat-square&logo=tvtime&link=https://hyun222.tistory.com)](https://hyun222.tistory.com)
+The build is minified and the filenames include the hashes.\
+Your app is ready to be deployed!
+
+See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+
+### `npm run eject`
+
+**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+
+If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+
+Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+
+You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+
+## Learn More
+
+You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+
+To learn React, check out the [React documentation](https://reactjs.org/).
+
+### Code Splitting
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+
+### Analyzing the Bundle Size
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+
+### Making a Progressive Web App
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+
+### Advanced Configuration
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+
+### Deployment
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+
+### `npm run build` fails to minify
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
