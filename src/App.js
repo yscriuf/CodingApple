@@ -3,8 +3,8 @@ import "./App.css";
 import { useState } from "react";
 import { Button, Navbar, Container, Nav, Col, Row } from "react-bootstrap";
 import { data } from "./data";
-import { HOME } from "./home";
-import { DETAIL } from "./detail";
+import { HOME } from "./routes/home";
+import { DETAIL } from "./routes/detail";
 import { Routes, Route, Link } from "react-router-dom";
 
 function App() {
