@@ -15,21 +15,21 @@ function App() {
         <Container>
           <Navbar.Brand href="/">ShoeShop</Navbar.Brand>
           <Nav className="me-auto">
-            <Link to="/detail">Detail</Link>
+            <Nav.Link href="/detail">Detail</Nav.Link>
           </Nav>
         </Container>
       </Navbar>
 
       <Routes>
         <Route path="/" element={<HOME shoes={shoes} />} />
-        <Route path="/detail" element={ <div><DETAIL></DETAIL></div> }/>
+        <Route path="/detail" element={ <DETAIL /> }/>
       </Routes>
     </div>
   );
 }
 
 function DETAIL(props) {
-  <>
+  return (
     <div className="container">
       <div className="row">
         <div className="col-md-6">
@@ -46,7 +46,7 @@ function DETAIL(props) {
         </div>
       </div>
     </div>
-  </>;
+  );
 }
 
 function HOME(props) {
