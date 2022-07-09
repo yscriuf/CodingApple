@@ -27,6 +27,7 @@ function App() {
       <Routes>
         <Route path="/" element={<HOME shoes={shoes} />} />
         <Route path="/detail" element={ <DETAIL /> }/>
+        <Route path="*" element={<div>404페이지임</div>} />
       </Routes>
     </div>
   );
