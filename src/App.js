@@ -25,7 +25,7 @@ function App() {
 
       <Routes>
         <Route path="/" element={<HOME shoes={shoes} />} />
-        <Route path="/detail" element={ <DETAIL /> }/>
+        <Route path="/detail/:id" element={ <DETAIL shoes={shoes} /> }/>
         
         <Route path="/Event" element={ <EVENT /> }>
           <Route path="one" element={ <div> 첫 주문시 양배추즙 서비스 </div> } />
