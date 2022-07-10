@@ -1,4 +1,5 @@
 import { useParams } from "react-router";
+import styled from "styled-components";
 
 export function DETAIL(props) {
 
@@ -11,10 +12,17 @@ export function DETAIL(props) {
     }
   });
 
+  let YellowBtn = styled.button`
+    background : yellow;
+    color : black;
+    padding : 10px;
+  `
+
   let itemSrc = "https://codingapple1.github.io/shop/shoes" + (Number(id)+1) + ".jpg";
 
   return (
     <div className="container">
+      <YellowBtn>버튼</YellowBtn>
       <div className="row">
         <div className="col-md-6">
           <img
