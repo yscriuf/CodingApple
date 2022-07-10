@@ -12,8 +12,9 @@ export function DETAIL(props) {
     }
   });
 
-  let YellowBtn = styled.button`
-    background : yellow;
+  // 아래와 같이 했을 때 만들어지는 것은 component임.
+  let ColorBtn = styled.button`
+    background : ${ props => props.bg };
     color : black;
     padding : 10px;
   `
@@ -22,7 +23,7 @@ export function DETAIL(props) {
 
   return (
     <div className="container">
-      <YellowBtn>버튼</YellowBtn>
+      <ColorBtn bg="white">버튼</ColorBtn>
       <div className="row">
         <div className="col-md-6">
           <img
