@@ -10,6 +10,7 @@ export function DETAIL(props) {
   useEffect(()=>{
     // 이 안에 적은 코드는, 밑에 html이 렌더링 되고나서 실행되서 빠릿빠릿한 홈페이지처럼 보이게 만들어줌.
     // mount 시 실행, dependency가 변경될 때 실행
+    // dependency가 하나도 없을 때에는 mount 시에만 사용
     console.log('진입');
     timer = setTimeout(()=>{
       if(count > 0)
@@ -17,6 +18,12 @@ export function DETAIL(props) {
       else
         clearTimeout(timer);
     }, 1000);
+
+    return ()=>{
+      // clean up function으로 불림.
+      // useEffect 코드를 실행하기 전 이 함수를 먼저 실행함.
+      clearTimeout(timer);
+    }
   }, [])
 
   let {id} = useParams();
