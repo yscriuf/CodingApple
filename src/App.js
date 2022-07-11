@@ -6,9 +6,11 @@ import { data } from "./data";
 import { HOME } from "./routes/home";
 import { DETAIL } from "./routes/detail";
 import { Routes, Route, Link, useNavigate, Outlet } from "react-router-dom";
+import axios from "axios";
+import { element } from "prop-types";
 
 function App() {
-  let [shoes] = useState(data);
+  let [shoes, setShoes] = useState(data);
   let navigate = useNavigate();
 
   return (
@@ -34,6 +36,24 @@ function App() {
 
         <Route path="*" element={<div>404페이지임</div>} />
       </Routes>
+
+      <button onClick={()=>{
+        axios.get('https://codingapple1.github.io/shop/data2.json')
+        .then((result)=>{ 
+          var temp = shoes;
+          result.data.forEach((element)=>{
+            temp.push(element);
+          })
+          setShoes(temp);
+          console.log(shoes);
+         })
+         .catch(()=>{
+          console.log('실패함');
+         })
+      }}>
+        버튼
+      </button>
+
     </div>
   );
 }
