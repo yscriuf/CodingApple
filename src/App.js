@@ -7,7 +7,6 @@ import { HOME } from "./routes/home";
 import { DETAIL } from "./routes/detail";
 import { Routes, Route, Link, useNavigate, Outlet } from "react-router-dom";
 import axios from "axios";
-import { element } from "prop-types";
 
 function App() {
   let [shoes, setShoes] = useState(data);
@@ -40,7 +39,7 @@ function App() {
       <button onClick={()=>{
         axios.get('https://codingapple1.github.io/shop/data2.json')
         .then((result)=>{ 
-          var temp = shoes;
+          var temp = [...shoes];
           result.data.forEach((element)=>{
             temp.push(element);
           })
@@ -53,7 +52,6 @@ function App() {
       }}>
         버튼
       </button>
-
     </div>
   );
 }

@@ -1,7 +1,7 @@
 import { Button, Navbar, Container, Nav, Col, Row } from "react-bootstrap";
 import bg from "../img/bg.png";
 
-export function HOME(props) {
+export function HOME({ shoes }) {
   return (
     <>
       <div
@@ -10,14 +10,15 @@ export function HOME(props) {
       ></div>
 
       <Row>
-        {props.shoes.map((t, i) => {
-          return <ITEMCARD item={props.shoes[i]}></ITEMCARD>;
-        })}
+        {
+        shoes.map((t, i) => {
+          return <ITEMCARD item={shoes[i]}></ITEMCARD>;
+        })
+        }
       </Row>
     </>
   );
 }
-
 
 function ITEMCARD(props) {
   return (
