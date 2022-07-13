@@ -38,11 +38,11 @@ function App() {
 
       <button onClick={()=>{
         fetch('https://codingapple1.github.io/shop/data2.json')
-        .then((result) => { console.log(result.json()); result.json() } )
+        .then((result) => result.json())
         .then((result) => {
-            var temp = [...shoes, ...result.data];
-            setShoes(temp);
-            console.log(shoes);
+          var temp = [...shoes, ...result];
+          setShoes(temp);
+          console.log(shoes);
          })
          .catch(()=>{
           console.log('실패함');
