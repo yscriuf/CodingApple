@@ -37,14 +37,12 @@ function App() {
       </Routes>
 
       <button onClick={()=>{
-        axios.get('https://codingapple1.github.io/shop/data2.json')
-        .then((result)=>{ 
-          var temp = [...shoes];
-          result.data.forEach((element)=>{
-            temp.push(element);
-          })
-          setShoes(temp);
-          console.log(shoes);
+        fetch('https://codingapple1.github.io/shop/data2.json')
+        .then((result) => { console.log(result.json()); result.json() } )
+        .then((result) => {
+            var temp = [...shoes, ...result.data];
+            setShoes(temp);
+            console.log(shoes);
          })
          .catch(()=>{
           console.log('실패함');
