@@ -1,7 +1,8 @@
 import { Button, Navbar, Container, Nav, Col, Row } from "react-bootstrap";
 import bg from "../img/bg.png";
 
-export function HOME({ shoes }) {
+export function HOME(props) {
+  let getItem = 2;
   return (
     <>
       <div
@@ -11,11 +12,18 @@ export function HOME({ shoes }) {
 
       <Row>
         {
-        shoes.map((t, i) => {
-          return <ITEMCARD item={shoes[i]}></ITEMCARD>;
+        props.shoes.map((t, i) => {
+          return <ITEMCARD item={props.shoes[i]}></ITEMCARD>;
         })
         }
       </Row>
+
+      <button onClick={()=>{
+        GET_Item(props.shoes, props.setShoes, getItem);
+        console.log(getItem);
+      }}>
+        버튼
+      </button>
     </>
   );
 }
@@ -36,4 +44,18 @@ function ITEMCARD(props) {
       <p>{props.item.price}</p>
     </Col>
   );
+}
+
+function GET_Item(shoes, setShoes, getItem){
+  console.log(getItem);
+  fetch(`https://codingapple1.github.io/shop/data${getItem}.json`)
+  .then((result) => result.json())
+  .then((result) => {
+    var temp = [...shoes, ...result];
+    setShoes(temp);
+    getItem++;
+    })
+    .catch((e)=>{
+    console.log(e);
+    })
 }

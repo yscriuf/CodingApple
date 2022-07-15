@@ -1,11 +1,15 @@
 import { useState } from "react";
 import { useEffect } from "react";
 import { useParams } from "react-router";
+import "./detail.css";
 import styled from "styled-components";
 
 export function DETAIL(props) {
   let [alertMsg, setAleartMsg] = useState(false);
   let [userInput, setUserInput] = useState("");
+  let [tabs, setTabs] = useState(['상세정보', '리뷰', 'Q&A', '반품/교환정보']);
+  let [tabContents, setTabContents] = useState(['상세정보 페이지', '리뷰 페이지', 'Q&A 페이지', '반품 페이지']);
+  let [selectedTab, setSelectedTab] = useState(0);
 
   useEffect(() => {
     const regex = /[^0-9]/;
@@ -65,6 +69,21 @@ export function DETAIL(props) {
           <button className="btn btn-danger">주문하기</button>
         </div>
       </div>
+
+      <div className="tab-contaniner">
+        {
+          tabs.map((element, i)=>{
+            return <div id={i} className="tab-btn" onClick={(e)=>{setSelectedTab(i);}}>{element}</div>
+          })
+        }
+      </div>
+
+      <div className="tab-content">
+        {
+          tabContents[selectedTab]
+        }
+      </div>
+      
     </div>
   );
 }

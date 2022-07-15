@@ -1,0 +1,21 @@
+.tab-contaniner{
+  background-color: #eee;
+  border-bottom: solid 1px black;
+  display: flex;
+  justify-content: center;
+}
+
+.tab-btn{
+  width: 100%;
+  padding: 20px;
+  text-align: center;
+}
+
+.tab-content{
+  text-align: left;
+}
+
+.selected{
+  background-color: darkblue;
+  color: white;
+}

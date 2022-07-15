@@ -11,7 +11,6 @@ import axios from "axios";
 function App() {
   let [shoes, setShoes] = useState(data);
   let navigate = useNavigate();
-  let getItem = 2;
 
   return (
     <div className="App">
@@ -26,7 +25,7 @@ function App() {
       </Navbar>
 
       <Routes>
-        <Route path="/" element={<HOME shoes={shoes} />} />
+        <Route path="/" element={<HOME shoes={shoes} setShoes={setShoes} />} />
         <Route path="/detail/:id" element={ <DETAIL shoes={shoes} /> }/>
         
         <Route path="/Event" element={ <EVENT /> }>
@@ -36,29 +35,8 @@ function App() {
 
         <Route path="*" element={<div>404페이지임</div>} />
       </Routes>
-
-      <button onClick={()=>{
-        GET_Item(shoes, setShoes, getItem);
-        console.log(getItem);
-      }}>
-        버튼
-      </button>
     </div>
   );
-}
-
-function GET_Item(shoes, setShoes, getItem){
-  console.log(getItem);
-  fetch(`https://codingapple1.github.io/shop/data${getItem}.json`)
-  .then((result) => result.json())
-  .then((result) => {
-    var temp = [...shoes, ...result];
-    setShoes(temp);
-    getItem++;
-    })
-    .catch((e)=>{
-    console.log(e);
-    })
 }
 
 function EVENT(){
