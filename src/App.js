@@ -11,6 +11,7 @@ import axios from "axios";
 function App() {
   let [shoes, setShoes] = useState(data);
   let navigate = useNavigate();
+  let getItem = 2;
 
   return (
     <div className="App">
@@ -37,21 +38,27 @@ function App() {
       </Routes>
 
       <button onClick={()=>{
-        fetch('https://codingapple1.github.io/shop/data2.json')
-        .then((result) => result.json())
-        .then((result) => {
-          var temp = [...shoes, ...result];
-          setShoes(temp);
-          console.log(shoes);
-         })
-         .catch(()=>{
-          console.log('실패함');
-         })
+        GET_Item(shoes, setShoes, getItem);
+        console.log(getItem);
       }}>
         버튼
       </button>
     </div>
   );
+}
+
+function GET_Item(shoes, setShoes, getItem){
+  console.log(getItem);
+  fetch(`https://codingapple1.github.io/shop/data${getItem}.json`)
+  .then((result) => result.json())
+  .then((result) => {
+    var temp = [...shoes, ...result];
+    setShoes(temp);
+    getItem++;
+    })
+    .catch((e)=>{
+    console.log(e);
+    })
 }
 
 function EVENT(){
