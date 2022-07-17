@@ -10,6 +10,12 @@ export function DETAIL(props) {
   let [tabs, setTabs] = useState(['상세정보', '리뷰', 'Q&A', '반품/교환정보']);
   let [tabContents, setTabContents] = useState(['상세정보 페이지', '리뷰 페이지', 'Q&A 페이지', '반품 페이지']);
   let [selectedTab, setSelectedTab] = useState(0);
+  let [loading, setLoading] = useState('');
+
+  useEffect(() => {
+    console.log('props change');
+    setLoading('loading');
+  }, [props]);
 
   useEffect(() => {
     const regex = /[^0-9]/;
@@ -43,7 +49,7 @@ export function DETAIL(props) {
     "https://codingapple1.github.io/shop/shoes" + (Number(id) + 1) + ".jpg";
 
   return (
-    <div className="container">
+    <div className={"tab-wrap " + loading}>
       <input
         onChange={(e) => {
           setUserInput(e.target.value);
@@ -73,7 +79,7 @@ export function DETAIL(props) {
       <div className="tab-contaniner">
         {
           tabs.map((element, i)=>{
-            return <div id={i} className="tab-btn" onClick={(e)=>{setSelectedTab(i);}}>{element}</div>
+            return <div id={`tab-${i}`} className="tab-btn" onClick={(e)=>{setSelectedTab(i);}}>{element}</div>
           })
         }
       </div>

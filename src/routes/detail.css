@@ -1,3 +1,7 @@
+.tab-wrap{
+  opacity: 0;
+}
+
 .tab-contaniner{
   background-color: #eee;
   border-bottom: solid 1px black;
@@ -18,4 +22,9 @@
 .selected{
   background-color: darkblue;
   color: white;
+}
+
+.loading{
+  opacity: 1;
+  transition: all 0.5s;
 }

@@ -19,7 +19,7 @@ export function HOME(props) {
       </Row>
 
       <button onClick={()=>{
-        GET_Item(props.shoes, props.setShoes, getItem);
+        <GET_Item shoes={props.shoes} setShoes={props.setShoes} getItem={getItem}></GET_Item>
         console.log(getItem);
       }}>
         버튼
@@ -46,7 +46,7 @@ function ITEMCARD(props) {
   );
 }
 
-function GET_Item(shoes, setShoes, getItem){
+function GET_Item({shoes, setShoes, getItem}){
   console.log(getItem);
   fetch(`https://codingapple1.github.io/shop/data${getItem}.json`)
   .then((result) => result.json())
