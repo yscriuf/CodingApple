@@ -1,6 +1,6 @@
 import logo from "./logo.svg";
 import "./App.css";
-import { useState } from "react";
+import { createContext, useState } from "react";
 import { Button, Navbar, Container, Nav, Col, Row } from "react-bootstrap";
 import { data } from "./data";
 import { HOME } from "./routes/home";
@@ -8,8 +8,11 @@ import { DETAIL } from "./routes/detail";
 import { Routes, Route, Link, useNavigate, Outlet } from "react-router-dom";
 import axios from "axios";
 
+export let Context1 = createContext();
+
 function App() {
   let [shoes, setShoes] = useState(data);
+  let [context] = useState([0,1,2]);
   let navigate = useNavigate();
 
   return (
@@ -26,7 +29,11 @@ function App() {
 
       <Routes>
         <Route path="/" element={<HOME shoes={shoes} setShoes={setShoes} />} />
-        <Route path="/detail/:id" element={ <DETAIL shoes={shoes} /> }/>
+        <Route path="/detail/:id" element={ 
+          <Context1.Provider value={{context }}>
+            <DETAIL shoes={shoes} />
+          </Context1.Provider>
+         }/>
         
         <Route path="/Event" element={ <EVENT /> }>
           <Route path="one" element={ <div> 첫 주문시 양배추즙 서비스 </div> } />
