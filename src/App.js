@@ -5,10 +5,9 @@ import { Button, Navbar, Container, Nav, Col, Row } from "react-bootstrap";
 import { data } from "./data";
 import { HOME } from "./routes/home";
 import { DETAIL } from "./routes/detail";
+import { Cart } from "./routes/Cart";
 import { Routes, Route, Link, useNavigate, Outlet } from "react-router-dom";
 import axios from "axios";
-
-export let Context1 = createContext();
 
 function App() {
   let [shoes, setShoes] = useState(data);
@@ -30,9 +29,10 @@ function App() {
       <Routes>
         <Route path="/" element={<HOME shoes={shoes} setShoes={setShoes} />} />
         <Route path="/detail/:id" element={ 
-          <Context1.Provider value={{context }}>
             <DETAIL shoes={shoes} />
-          </Context1.Provider>
+         }/>
+        <Route path="/cart" element={ 
+            <Cart />
          }/>
         
         <Route path="/Event" element={ <EVENT /> }>

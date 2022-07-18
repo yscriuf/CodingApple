@@ -3,12 +3,8 @@ import { useEffect } from "react";
 import { useParams } from "react-router";
 import "./detail.css";
 import styled from "styled-components";
-import {Context1} from './../App.js'
-import { useContext } from "react";
 
 export function DETAIL(props) {
-  let {context} = useContext(Context1);
-  console.log(context);
   let [alertMsg, setAleartMsg] = useState(false);
   let [userInput, setUserInput] = useState("");
   let [tabs, setTabs] = useState(['상세정보', '리뷰', 'Q&A', '반품/교환정보']);
