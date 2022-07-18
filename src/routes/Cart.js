@@ -1,6 +1,12 @@
 import { Table } from "react-bootstrap";
+import { useSelector } from "react-redux";
 
 export function Cart() {
+
+  let state = useSelector((state)=>{ return state })
+  //redux에 있던 모든 state가 a에 등록됨.
+  console.log(state);
+
   return(
     <Table>
       <thead>
