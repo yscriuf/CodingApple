@@ -3,9 +3,8 @@ import { useSelector } from "react-redux";
 
 export function Cart() {
 
-  let state = useSelector((state)=>{ return state })
-  //redux에 있던 모든 state가 a에 등록됨.
-  console.log(state);
+  let cart = useSelector((state)=>{ return state.cart })
+  console.log(cart);
 
   return(
     <Table>
@@ -18,12 +17,18 @@ export function Cart() {
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td>1</td>
-          <td>안녕</td>
-          <td>안녕</td>
-          <td>안녕</td>
-        </tr>
+      {
+        cart.map((element, i)=>{
+          return (
+              <tr>
+                <td>{element.id}</td>
+                <td>{element.name}</td>
+                <td>{element.count}</td>
+                <td>gd</td>
+              </tr>
+          )
+        })
+      }
       </tbody>
     </Table> 
   );
