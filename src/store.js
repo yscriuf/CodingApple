@@ -5,13 +5,15 @@ let user = createSlice({
   initialState : { name : 'kim', age : 20 },
   reducers : {
     changeName(state){
-      state.age++;
-      return state;
+      state.name = 'park'
+    },
+    increase(state, num){
+      state.age += num.payload;
     }
   }
 })
 
-export let { changeCount, changeName } = user.actions
+export let { changeName, increase } = user.actions
 
 let cart = createSlice({ 
   name : 'cart',
@@ -27,6 +29,8 @@ let cart = createSlice({
     }
   }
 })
+
+export let { changeCount } = cart.actions
 
 export default configureStore({
   reducer: {
