@@ -20,7 +20,8 @@ function App() {
         <Container>
           <Navbar.Brand href="/">ShoeShop</Navbar.Brand>
           <Nav className="me-auto">
-            <Nav.Link href="/detail">Detail</Nav.Link>
+            <Nav.Link href="/detail/0">Detail</Nav.Link>
+            <Nav.Link href="/cart">Cart</Nav.Link>
             <Nav.Link href="/event">EVENT</Nav.Link>
           </Nav>
         </Container>
