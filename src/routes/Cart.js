@@ -1,6 +1,7 @@
 import { Table } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
-import { changeCount, changeName, increase } from "../store";
+import { changeName, increase } from "../store/userSlice";
+import { changeCount } from "../store/cartSlice";
 
 export function Cart() {
 
