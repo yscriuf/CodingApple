@@ -35,7 +35,7 @@ export function Cart() {
                 <td>{element.count}</td>
                 <td>
                   <button onClick={()=>{
-                    dispatch(changeCount())
+                    dispatch(changeCount(i))
                   }}>+</button>
                 </td>
               </tr>
