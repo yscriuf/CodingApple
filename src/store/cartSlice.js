@@ -27,10 +27,22 @@ let cart = createSlice({
         }
       }
       state.push({id : id, name : name, count : 1});
-    }
+    },
+    removeItem(state, action){
+      console.log(action.payload);
+      let name = action.payload;
+      let i = 0;
+      for(var obj of state){
+        if(obj.name == name){
+          state.splice(i, 1);
+          return;
+        }
+        i++;
+      }
+    },
   }
 })
 
-export let { changeCount, addItem } = cart.actions
+export let { changeCount, addItem, removeItem } = cart.actions
 
 export default cart
