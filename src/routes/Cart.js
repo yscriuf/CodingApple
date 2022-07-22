@@ -11,12 +11,6 @@ export function Cart() {
 
   return(
     <Table>
-      <button onClick={()=>{
-        dispatch(increase(100));
-      }}>
-        {state.user.age}
-      </button>
-
       <thead>
         <tr>
           <th>#</th>
@@ -30,12 +24,12 @@ export function Cart() {
         state.cart.map((element, i)=>{
           return (
               <tr key={i}>
-                <td>{element.id}</td>
+                <td>{i}</td>
                 <td>{element.name}</td>
                 <td>{element.count}</td>
                 <td>
                   <button onClick={()=>{
-                    dispatch(changeCount(element.id))
+                    dispatch(changeCount(element.name))
                   }}>+</button>
                 </td>
               </tr>
@@ -43,7 +37,6 @@ export function Cart() {
         })
       }
       </tbody>
-      {state.user.name}
     </Table> 
   );
 }

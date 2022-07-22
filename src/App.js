@@ -17,14 +17,11 @@ function App() {
   return (
     <div className="App">
       <Navbar bg="primary" variant="dark">
-        <Container>
-          <Navbar.Brand href="/">ShoeShop</Navbar.Brand>
+          <Link to="/" className="logo">ShoeShop</Link>
           <Nav className="me-auto">
-            <Nav.Link href="/detail/0">Detail</Nav.Link>
-            <Nav.Link href="/cart">Cart</Nav.Link>
-            <Nav.Link href="/event">EVENT</Nav.Link>
+            <Link to="/cart" className="nav-link">Cart</Link>
+            <Link to="/event" className="nav-link">EVENT</Link>
           </Nav>
-        </Container>
       </Navbar>
 
       <Routes>

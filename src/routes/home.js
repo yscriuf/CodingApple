@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Button, Navbar, Container, Nav, Col, Row } from "react-bootstrap";
+import { Link } from "react-router-dom";
 import bg from "../img/bg.png";
 
 export function HOME(props) {
@@ -32,6 +33,7 @@ export function HOME(props) {
 
 function ITEMCARD(props) {
   return (
+    <Link to={`/detail/${props.item.id}`}>
     <Col md={4}>
       <img
         src={
@@ -45,6 +47,7 @@ function ITEMCARD(props) {
       <p>{props.item.content}</p>
       <p>{props.item.price}</p>
     </Col>
+    </Link>
   );
 }
 

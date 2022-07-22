@@ -77,7 +77,7 @@ export function DETAIL(props) {
           <p>{props.shoes[id].content}</p>
           <p>{props.shoes[id].price}</p>
           <button className="btn btn-danger" onClick={()=>{
-            dispatch(addItem(props.shoes[id].title));
+            dispatch(addItem([id, props.shoes[id].title]));
           }}>주문하기</button>
         </div>
       </div>

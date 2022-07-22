@@ -9,17 +9,24 @@ let cart = createSlice({
   ],
   reducers : {
     changeCount(state, action){
-      state[action.payload].count++;
+      let name = action.payload;
+      for(var obj of state){
+        if(obj.name == name){
+          obj.count++;
+          return;
+        }
+      }
     },
     addItem(state, action){
       console.log(action.payload);
-      for(let key in state){
-        if(state[key].name == action.payload){
-          state[key].count++;
-          console.log(state[key].count);
+      let [id, name] = action.payload;
+      for(var obj of state){
+        if(obj.name == name){
+          obj.count++;
+          return;
         }
       }
-      // state.push({id : 0, name : action.payload, count : 1});
+      state.push({id : id, name : name, count : 1});
     }
   }
 })
