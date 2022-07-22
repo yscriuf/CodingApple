@@ -1,8 +1,10 @@
+import { useState } from "react";
 import { Button, Navbar, Container, Nav, Col, Row } from "react-bootstrap";
 import bg from "../img/bg.png";
 
 export function HOME(props) {
-  let getItem = 2;
+  let [cnt, setCnt] = useState(2);
+  
   return (
     <>
       <div
@@ -19,8 +21,8 @@ export function HOME(props) {
       </Row>
 
       <button onClick={()=>{
-        <GET_Item shoes={props.shoes} setShoes={props.setShoes} getItem={getItem}></GET_Item>
-        console.log(getItem);
+        GET_Item(props.shoes, props.setShoes, cnt);
+        setCnt(cnt+1);
       }}>
         버튼
       </button>
@@ -46,14 +48,14 @@ function ITEMCARD(props) {
   );
 }
 
-function GET_Item({shoes, setShoes, getItem}){
-  console.log(getItem);
-  fetch(`https://codingapple1.github.io/shop/data${getItem}.json`)
+function GET_Item(shoes, setShoes, cnt){
+  console.log(cnt);
+  fetch(`https://codingapple1.github.io/shop/data${cnt}.json`)
   .then((result) => result.json())
   .then((result) => {
     var temp = [...shoes, ...result];
     setShoes(temp);
-    getItem++;
+    console.log(shoes);
     })
     .catch((e)=>{
     console.log(e);

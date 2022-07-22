@@ -3,6 +3,8 @@ import { useEffect } from "react";
 import { useParams } from "react-router";
 import "./detail.css";
 import styled from "styled-components";
+import { changeCount, addItem } from "./../store/cartSlice";
+import { useDispatch } from "react-redux";
 
 export function DETAIL(props) {
   let [alertMsg, setAleartMsg] = useState(false);
@@ -11,6 +13,8 @@ export function DETAIL(props) {
   let [tabContents, setTabContents] = useState(['상세정보 페이지', '리뷰 페이지', 'Q&A 페이지', '반품 페이지']);
   let [selectedTab, setSelectedTab] = useState(0);
   let [loading, setLoading] = useState('');
+
+  let dispatch = useDispatch();
 
   useEffect(() => {
     console.log('props change');
@@ -72,7 +76,9 @@ export function DETAIL(props) {
           <h4 className="pt-5">{props.shoes[id].title}</h4>
           <p>{props.shoes[id].content}</p>
           <p>{props.shoes[id].price}</p>
-          <button className="btn btn-danger">주문하기</button>
+          <button className="btn btn-danger" onClick={()=>{
+            dispatch(addItem(props.shoes[id].title));
+          }}>주문하기</button>
         </div>
       </div>
 
