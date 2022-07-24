@@ -1,6 +1,6 @@
 import logo from "./logo.svg";
 import "./App.css";
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 import { Button, Navbar, Container, Nav, Col, Row } from "react-bootstrap";
 import { data } from "./data";
 import { HOME } from "./routes/home";
@@ -10,6 +10,10 @@ import { Routes, Route, Link, useNavigate, Outlet } from "react-router-dom";
 import axios from "axios";
 
 function App() {
+  useEffect(()=>{
+    localStorage.setItem('watched', JSON.stringify([]))
+  }, []);
+
   let [shoes, setShoes] = useState(data);
   let [context] = useState([0,1,2]);
   let navigate = useNavigate();

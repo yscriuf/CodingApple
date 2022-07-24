@@ -25,7 +25,7 @@ export function HOME(props) {
         GET_Item(props.shoes, props.setShoes, cnt);
         setCnt(cnt+1);
       }}>
-        버튼
+        버튼{cnt}
       </button>
     </>
   );
