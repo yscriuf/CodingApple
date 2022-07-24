@@ -11,7 +11,8 @@ import axios from "axios";
 
 function App() {
   useEffect(()=>{
-    localStorage.setItem('watched', JSON.stringify([]))
+    if(!localStorage.getItem('watched'))
+      localStorage.setItem('watched', JSON.stringify([]));
   }, []);
 
   let [shoes, setShoes] = useState(data);

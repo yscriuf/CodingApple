@@ -13,12 +13,18 @@ export function DETAIL(props) {
   let [tabContents, setTabContents] = useState(['상세정보 페이지', '리뷰 페이지', 'Q&A 페이지', '반품 페이지']);
   let [selectedTab, setSelectedTab] = useState(0);
   let [loading, setLoading] = useState('');
-
+  
   let dispatch = useDispatch();
+  let { id } = useParams();
 
   useEffect(() => {
     console.log('props change');
     setLoading('loading');
+
+    let watched = JSON.parse(localStorage.getItem('watched'));
+    watched.push(id);
+    let uniqueWatched = [...new Set(watched)];
+    localStorage.setItem('watched', JSON.stringify(uniqueWatched));
   }, [props]);
 
   useEffect(() => {
@@ -34,7 +40,6 @@ export function DETAIL(props) {
     return () => {};
   }, [userInput]);
 
-  let { id } = useParams();
 
   props.shoes.forEach((element, i) => {
     if (element.id == id) {
