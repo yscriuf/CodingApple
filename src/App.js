@@ -1,17 +1,14 @@
 import logo from "./logo.svg";
 import "./App.css";
-import { createContext, lazy, useEffect, useState } from "react";
+import { createContext, Suspense, lazy, useEffect, useState } from "react";
 import { Button, Navbar, Container, Nav, Col, Row } from "react-bootstrap";
 import { data } from "./data";
 import { HOME } from "./routes/home";
-// import { DETAIL } from "./routes/detail";
-// import { Cart } from "./routes/Cart";
+import { DETAIL } from "./routes/detail";
+import { Cart } from "./routes/Cart";
 import { Routes, Route, Link, useNavigate, Outlet } from "react-router-dom";
 import axios from "axios";
 import { useQuery } from "react-query";
-
-const DETAIL = lazy(()=> import('./routes/detail.js'));
-const Cart = lazy(()=> import('./routes/Cart.js'));
 
 function App() {
   useEffect(()=>{
@@ -49,22 +46,24 @@ function App() {
           </Nav>
       </Navbar>
 
-      <Routes>
-        <Route path="/" element={<HOME shoes={shoes} setShoes={setShoes} />} />
-        <Route path="/detail/:id" element={ 
-            <DETAIL shoes={shoes} />
-         }/>
-        <Route path="/cart" element={ 
-            <Cart />
-         }/>
-        
-        <Route path="/Event" element={ <EVENT /> }>
-          <Route path="one" element={ <div> 첫 주문시 양배추즙 서비스 </div> } />
-          <Route path="two" element={ <div> 생일기념 쿠폰 받기 </div> } />
-        </Route>
+      <Suspense fallback={<div>로딩중임</div>}>
+        <Routes>
+          <Route path="/" element={<HOME shoes={shoes} setShoes={setShoes} />} />
+          <Route path="/detail/:id" element={ 
+              <DETAIL shoes={shoes} />
+          }/>
+          <Route path="/cart" element={ 
+              <Cart />
+          }/>
+          
+          <Route path="/Event" element={ <EVENT /> }>
+            <Route path="one" element={ <div> 첫 주문시 양배추즙 서비스 </div> } />
+            <Route path="two" element={ <div> 생일기념 쿠폰 받기 </div> } />
+          </Route>
 
-        <Route path="*" element={<div>404페이지임</div>} />
-      </Routes>
+          <Route path="*" element={<div>404페이지임</div>} />
+        </Routes>
+      </Suspense>
     </div>
   );
 }
