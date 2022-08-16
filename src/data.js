@@ -18,5 +18,19 @@ export let data = [
     title : "Grey Yordan",
     content : "Born in the States",
     price : 130000
+  },
+
+  {
+    id : 3,
+    title : "Yellow Jorthan",
+    content : "Born in Paris",
+    price : 96000
+  },
+
+  {
+    id : 4,
+    title : "Deep blue",
+    content : "Born in New York",
+    price : 84000
   }
 ];
